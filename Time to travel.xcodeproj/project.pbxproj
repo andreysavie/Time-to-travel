@@ -8,22 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		D57BA7F728469BFB00DA8F4D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57BA7F628469BFB00DA8F4D /* AppDelegate.swift */; };
-		D57BA7F928469BFB00DA8F4D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57BA7F828469BFB00DA8F4D /* SceneDelegate.swift */; };
-		D57BA7FB28469BFB00DA8F4D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57BA7FA28469BFB00DA8F4D /* ViewController.swift */; };
+		D57BA7FB28469BFB00DA8F4D /* FlightsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57BA7FA28469BFB00DA8F4D /* FlightsListViewController.swift */; };
 		D57BA7FE28469BFB00DA8F4D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D57BA7FC28469BFB00DA8F4D /* Main.storyboard */; };
 		D57BA80028469BFD00DA8F4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D57BA7FF28469BFD00DA8F4D /* Assets.xcassets */; };
 		D57BA80328469BFD00DA8F4D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D57BA80128469BFD00DA8F4D /* LaunchScreen.storyboard */; };
+		D57BA80B28469D3200DA8F4D /* FlightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57BA80A28469D3200DA8F4D /* FlightViewController.swift */; };
+		D57BA80D28469D5200DA8F4D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57BA80C28469D5200DA8F4D /* Model.swift */; };
+		D57BA80F2846AEB300DA8F4D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57BA80E2846AEB300DA8F4D /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D57BA7F328469BFA00DA8F4D /* Time to travel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Time to travel.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D57BA7F628469BFB00DA8F4D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D57BA7F828469BFB00DA8F4D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D57BA7FA28469BFB00DA8F4D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D57BA7FA28469BFB00DA8F4D /* FlightsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightsListViewController.swift; sourceTree = "<group>"; };
 		D57BA7FD28469BFB00DA8F4D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D57BA7FF28469BFD00DA8F4D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D57BA80228469BFD00DA8F4D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D57BA80428469BFD00DA8F4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D57BA80A28469D3200DA8F4D /* FlightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightViewController.swift; sourceTree = "<group>"; };
+		D57BA80C28469D5200DA8F4D /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		D57BA80E2846AEB300DA8F4D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,9 +60,11 @@
 		D57BA7F528469BFA00DA8F4D /* Time to travel */ = {
 			isa = PBXGroup;
 			children = (
+				D57BA80E2846AEB300DA8F4D /* Constants.swift */,
 				D57BA7F628469BFB00DA8F4D /* AppDelegate.swift */,
-				D57BA7F828469BFB00DA8F4D /* SceneDelegate.swift */,
-				D57BA7FA28469BFB00DA8F4D /* ViewController.swift */,
+				D57BA7FA28469BFB00DA8F4D /* FlightsListViewController.swift */,
+				D57BA80A28469D3200DA8F4D /* FlightViewController.swift */,
+				D57BA80C28469D5200DA8F4D /* Model.swift */,
 				D57BA7FC28469BFB00DA8F4D /* Main.storyboard */,
 				D57BA7FF28469BFD00DA8F4D /* Assets.xcassets */,
 				D57BA80128469BFD00DA8F4D /* LaunchScreen.storyboard */,
@@ -138,9 +144,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D57BA7FB28469BFB00DA8F4D /* ViewController.swift in Sources */,
+				D57BA80D28469D5200DA8F4D /* Model.swift in Sources */,
+				D57BA7FB28469BFB00DA8F4D /* FlightsListViewController.swift in Sources */,
 				D57BA7F728469BFB00DA8F4D /* AppDelegate.swift in Sources */,
-				D57BA7F928469BFB00DA8F4D /* SceneDelegate.swift in Sources */,
+				D57BA80B28469D3200DA8F4D /* FlightViewController.swift in Sources */,
+				D57BA80F2846AEB300DA8F4D /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,7 +300,7 @@
 				INFOPLIST_FILE = "Time to travel/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -320,7 +328,7 @@
 				INFOPLIST_FILE = "Time to travel/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
