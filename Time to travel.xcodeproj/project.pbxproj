@@ -22,6 +22,7 @@
 /* Begin PBXFileReference section */
 		4C0A6BEC549406DC7E35B2DA /* Pods-Time to travel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Time to travel.debug.xcconfig"; path = "Target Support Files/Pods-Time to travel/Pods-Time to travel.debug.xcconfig"; sourceTree = "<group>"; };
 		B8493C83B42C057A57F08CE8 /* Pods_Time_to_travel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Time_to_travel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D551CA0C284937870019A464 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D57BA7F328469BFA00DA8F4D /* Time to travel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Time to travel.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D57BA7F628469BFB00DA8F4D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D57BA7FA28469BFB00DA8F4D /* FlightsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightsListViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +93,7 @@
 				D57BA7FA28469BFB00DA8F4D /* FlightsListViewController.swift */,
 				D57BA8102846B9FA00DA8F4D /* FlightCollectionViewCell.swift */,
 				D57BA80A28469D3200DA8F4D /* FlightDetailsViewController.swift */,
+				D551CA0C284937870019A464 /* README.md */,
 				D57BA7FC28469BFB00DA8F4D /* Main.storyboard */,
 				D57BA7FF28469BFD00DA8F4D /* Assets.xcassets */,
 				D57BA80128469BFD00DA8F4D /* LaunchScreen.storyboard */,
