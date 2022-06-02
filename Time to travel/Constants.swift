@@ -10,17 +10,15 @@ import UIKit
 
 
 public struct Fonts {
-    static let title3Font = UIFont.systemFont(ofSize: 20, weight: .semibold)
-    static let headlineFont = UIFont.systemFont(ofSize: 17, weight: .semibold)
-    static let bodyFont = UIFont.systemFont(ofSize: 17, weight: .regular)
-    static let footnoteBoldFont = UIFont.systemFont(ofSize: 13, weight: .semibold)
-    static let footnoteStatusFont = UIFont.systemFont(ofSize: 13, weight: .semibold)
-    static let footnoteFont = UIFont.systemFont(ofSize: 13, weight: .regular)
-    static let captionFont = UIFont.systemFont(ofSize: 12, weight: .regular)
+    static let titleNameFont = UIFont.systemFont(ofSize: 20, weight: .semibold)
+    static let titleDurationFont = UIFont.systemFont(ofSize: 17, weight: .semibold)
+    static let titleDateFont = UIFont.systemFont(ofSize: 17, weight: .regular)
+    static let titleAirportFont = UIFont.systemFont(ofSize: 13, weight: .semibold)
+    static let titlePriceFont = UIFont.systemFont(ofSize: 13, weight: .semibold)
 }
 
 public struct Colors {
-    static let lightGrayColor = UIColor(red: 242/255, green: 242/255, blue: 247/255, alpha: 1)
+    static let grayColor = UIColor(red: 100/255, green: 100/255, blue: 100/255, alpha: 1)
     static var purpleColor = UIColor(red: 161/255, green: 22/255, blue: 204/255, alpha: 1)
     static let blueColor = UIColor(red: 41/255, green: 109/255, blue: 255/255, alpha: 1)
     static let greenColor = UIColor(red: 29/255, green: 179/255, blue: 34/255, alpha: 1)
@@ -78,4 +76,16 @@ public extension UIView {
     func addSubviews(_ subviews: UIView...) {
           subviews.forEach { addSubview($0) }
       }
+    
+//    func registerCells (tableview: UITableView, id: String, cells: UITableViewCell...) {
+//        cells.forEach { tableview.register($0, forCellReuseIdentifier: id) }
+//    }
+//    
+    func getFormattedDate(date: Date, format: String) -> String {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = format
+            dateFormatter.locale = Locale(identifier: "ru_RU")
+            return dateFormatter.string(from: date)
+    }
+
 }

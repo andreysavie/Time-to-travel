@@ -6,9 +6,10 @@
 //
 
 import UIKit
+import SnapKit
 
 class FlightsListViewController: UIViewController {
-
+    
     static var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = Constants.indent
@@ -16,42 +17,115 @@ class FlightsListViewController: UIViewController {
         layout.sectionInset = UIEdgeInsets(top: Constants.topSectionInset, left: 0, bottom: Constants.bottomSectionInset, right: 0)
         return layout
     }()
-
-    private lazy var collectionView: UICollectionView = {
-        
-        let collection = UICollectionView(
-            frame: .zero,
-            collectionViewLayout: FlightsListViewController.layout
-        )
-        collection.backgroundColor = Colors.lightGrayColor
-//        collection.register(
-//            HabitCollectionViewCell.self,
-//            forCellWithReuseIdentifier: String(describing: HabitCollectionViewCell.self))
-//        collection.register(
-//            ProgressCollectionViewCell.self,
-//            forCellWithReuseIdentifier: String(describing: ProgressCollectionViewCell.self))
-        return collection
+    
+    private lazy var rightBarButtonItem: UIBarButtonItem = {
+        let rightBarButtonItem = UIBarButtonItem (
+            image: UIImage(systemName: "heart"),
+            style: .plain ,
+            target: self,
+            action: #selector(likeButtonPressed))
+        rightBarButtonItem.tintColor = Colors.purpleColor
+        return rightBarButtonItem
     }()
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    private lazy var collectionView: UICollectionView = {
+        
+        let collectionView = UICollectionView(
+            frame: .zero,
+            collectionViewLayout: FlightsListViewController.layout
+        )
+        collectionView.backgroundColor = Colors.grayColor
+        
+        collectionView.register(
+            FlightCollectionViewCell.self,
+            forCellWithReuseIdentifier: FlightCollectionViewCell.identifier)
+        //        collection.register(
+        //            ProgressCollectionViewCell.self,
+        //            forCellWithReuseIdentifier: String(describing: ProgressCollectionViewCell.self))
+        return collectionView
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
+        
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        setupLayout()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        collectionView.reloadData()
+    }
+    
+    
+    
+    
+    private func setupLayout() {
+        
+        view.addSubview(collectionView)
+        
+        collectionView.snp.makeConstraints { make in
+            make.leading.top.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
+    }
+    
+    @objc func likeButtonPressed() {
         
     }
-
-
+    
+    @objc func showFlightDetails() {
+        
+    }
+    
+    
+    
+    
+    
 }
 
+
+
+
+
+
+
+extension FlightsListViewController: UICollectionViewDataSource {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return flightsArray.count
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FlightCollectionViewCell.identifier, for: indexPath) as? FlightCollectionViewCell else { return UICollectionViewCell() }
+        cell.setConfigureOfCell(flight: flightsArray[indexPath.row])
+        
+        return cell
+        
+    }
+    
+    
+}
+
+extension FlightsListViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let flightDetailsViewController = FlightDetailsViewController(flight: flightsArray[indexPath.row])
+            navigationController?.pushViewController(flightDetailsViewController, animated: true)
+            collectionView.deselectItem(at: indexPath, animated: true)
+    }
+}
+
+extension FlightsListViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        return CGSize(width: floor(collectionView.frame.width - 32), height: 150)
+    }
+}
