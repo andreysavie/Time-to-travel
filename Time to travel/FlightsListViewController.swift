@@ -28,6 +28,22 @@ class FlightsListViewController: UIViewController {
         return rightBarButtonItem
     }()
     
+    private lazy var gradient: CAGradientLayer = {
+        let gradient = CAGradientLayer()
+        gradient.type = .axial
+        gradient.colors = [
+            GradientColors.foneFirstColor.cgColor,
+            GradientColors.foneSecondColor.cgColor,
+            GradientColors.foneThirdColor.cgColor
+        ]
+                
+        gradient.startPoint = CGPoint(x: 1, y: 0)
+        gradient.endPoint = CGPoint(x: 0, y: 1)
+        
+        gradient.locations = [0, 0.55, 1]
+        return gradient
+    }()
+    
     
     private lazy var collectionView: UICollectionView = {
         
@@ -35,7 +51,7 @@ class FlightsListViewController: UIViewController {
             frame: .zero,
             collectionViewLayout: FlightsListViewController.layout
         )
-        collectionView.backgroundColor = Colors.grayColor
+        collectionView.backgroundColor = .clear
         
         collectionView.register(
             FlightCollectionViewCell.self,
@@ -52,6 +68,7 @@ class FlightsListViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         setupLayout()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,6 +80,8 @@ class FlightsListViewController: UIViewController {
     
     private func setupLayout() {
         
+        gradient.frame = view.bounds
+        view.layer.addSublayer(gradient)
         view.addSubview(collectionView)
         
         collectionView.snp.makeConstraints { make in
@@ -74,15 +93,14 @@ class FlightsListViewController: UIViewController {
         
     }
     
-    @objc func showFlightDetails() {
-        
-    }
-    
-    
-    
-    
-    
 }
+
+
+
+
+
+
+
 
 
 
@@ -117,8 +135,8 @@ extension FlightsListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let flightDetailsViewController = FlightDetailsViewController(flight: flightsArray[indexPath.row])
-            navigationController?.pushViewController(flightDetailsViewController, animated: true)
-            collectionView.deselectItem(at: indexPath, animated: true)
+        navigationController?.pushViewController(flightDetailsViewController, animated: true)
+        collectionView.deselectItem(at: indexPath, animated: true)
     }
 }
 
@@ -126,6 +144,6 @@ extension FlightsListViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: floor(collectionView.frame.width - 32), height: 150)
+        return CGSize(width: floor(collectionView.frame.width - 32), height: 120)
     }
 }

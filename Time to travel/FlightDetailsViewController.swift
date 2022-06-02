@@ -31,6 +31,26 @@ class FlightDetailsViewController: UIViewController {
         return image
     }()
     
+    // MARK: Повтор!
+    
+    
+    private lazy var gradient: CAGradientLayer = {
+        let gradient = CAGradientLayer()
+        gradient.type = .axial
+        gradient.colors = [
+            GradientColors.foneFirstColor.cgColor,
+            GradientColors.foneSecondColor.cgColor,
+            GradientColors.foneThirdColor.cgColor
+        ]
+                
+        gradient.startPoint = CGPoint(x: 1, y: 0)
+        gradient.endPoint = CGPoint(x: 0, y: 1)
+        
+        gradient.locations = [0, 0.55, 1]
+        return gradient
+    }()
+    
+    
     init (flight: Flight?) {
         super.init(nibName: nil, bundle: nil)
         self.flight = flight
@@ -42,8 +62,10 @@ class FlightDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .green
         
+        gradient.frame = view.bounds
+        view.layer.addSublayer(gradient)
+
         self.view.addSubview(tableView)
         self.tableView.addSubview(backgroundImage)
         
@@ -160,14 +182,14 @@ class FlightPropsTableViewCell: UITableViewCell {
     private lazy var departurelabel = getLabel(
         text: "Вылет",
         size: 14,
-        color: Colors.grayColor,
+        color: .lightGray,
         weight: .bold
     )
     
     private lazy var arrivallabel = getLabel(
         text: "Прибытие",
         size: 14,
-        color: Colors.grayColor,
+        color: .lightGray,
         weight: .bold
     )
     
@@ -288,7 +310,7 @@ class FlightDateTableViewCell: UITableViewCell {
     private lazy var datelabel = getLabel(
         text: "Дата отправления",
         size: 14,
-        color: Colors.grayColor,
+        color: .lightGray,
         weight: .bold
     )
     
@@ -304,6 +326,8 @@ class FlightDateTableViewCell: UITableViewCell {
         weight: .bold
     )
     
+
+    
     func configureOfCell(flight: Flight) {
         self.flightDate.text = getFormattedDate(date: flight.departureDate, format: "E, dd MMMM")
 
@@ -311,12 +335,7 @@ class FlightDateTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.backgroundColor = .clear
-        contentView.addSubviews(
-            datelabel,
-            calendarIcon,
-            flightDate
-        )
+       
         setupLayout()
     }
     required init?(coder: NSCoder) {
@@ -324,7 +343,14 @@ class FlightDateTableViewCell: UITableViewCell {
     }
     
     private func setupLayout() {
-        
+                
+        contentView.backgroundColor = .clear
+        contentView.addSubviews(
+            datelabel,
+            calendarIcon,
+            flightDate
+        )
+
         datelabel.snp.makeConstraints { make in
             make.leading.top.trailing.equalToSuperview().inset(16)
         }
@@ -349,7 +375,7 @@ class PassengersTableViewCell: UITableViewCell {
     private lazy var passengerslabel = getLabel(
         text: "Пассажиры",
         size: 14,
-        color: Colors.grayColor,
+        color: .lightGray,
         weight: .bold
     )
     
@@ -436,7 +462,7 @@ class FlightClassTableViewCell: UITableViewCell {
     private lazy var classlabel = getLabel(
         text: "Класс перелёта",
         size: 14,
-        color: Colors.grayColor,
+        color: .lightGray,
         weight: .bold
     )
     
@@ -491,28 +517,43 @@ class FlightClassTableViewCell: UITableViewCell {
 class PurshaseButtonTableViewCell: UITableViewCell {
     
     static let identifirer = "PurshaseButtonTableViewCell"
-
-    private lazy var purchaseButton: UIButton = {
-       let button = UIButton()
+    
+    private lazy var purchaseButton: GradientButton = {
+        let button = GradientButton()
         button.setTitle("Перейти к покупке", for: .normal)
-        button.backgroundColor = .cyan
-        button.layer.cornerRadius = 8
-        button.layer.shadowOffset = CGSize(width: 0.0, height: 3.0)
-        button.layer.shadowRadius = 5.0
-        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.cornerRadius = 12
+        
+        button.layer.shadowOffset = CGSize(width: 0.0, height: 10)
+        button.layer.shadowRadius = 10
+        button.layer.shadowColor = Colors.purpleColor.cgColor
         button.layer.shadowOpacity = 0.5
         return button
+    }()
+    
+    private lazy var buttonGradient: CAGradientLayer = {
+        let gradient = CAGradientLayer()
+        gradient.type = .axial
+        gradient.colors = [
+            GradientColors.buttonFirstColor.cgColor,
+            GradientColors.buttonSecondColor.cgColor,
+        ]
+                
+        gradient.startPoint = CGPoint(x: 0, y: 0.5)
+        gradient.endPoint = CGPoint(x: 1, y: 0.5)
+        
+        return gradient
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.backgroundColor = .clear
+//        contentView.addSubview(purchaseButton)
         contentView.addSubview(purchaseButton)
-        
+
         purchaseButton.snp.makeConstraints { make in
             make.center.equalToSuperview()
             make.leading.trailing.equalToSuperview().inset(56)
-            make.height.equalTo(40)
+            make.height.equalTo(50)
         }
     }
     required init?(coder: NSCoder) {
@@ -557,3 +598,26 @@ extension UITableViewCell {
     }
 }
 
+// MARK: УНЕСТИ ОТСЮДА!
+
+class GradientButton: UIButton {
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        gradientLayer.frame = bounds
+    }
+
+    private lazy var gradientLayer: CAGradientLayer = {
+        let gradient = CAGradientLayer()
+        gradient.frame = self.bounds
+        gradient.colors = [
+            GradientColors.buttonFirstColor.cgColor,
+            GradientColors.buttonSecondColor.cgColor,
+        ]
+        gradient.startPoint = CGPoint(x: 0, y: 0.5)
+        gradient.endPoint = CGPoint(x: 1, y: 0.5)
+        gradient.cornerRadius = 16
+        layer.insertSublayer(gradient, at: 0)
+        return gradient
+    }()
+}

@@ -66,6 +66,13 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		D551CA0F284940540019A464 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		D57BA7EA28469BFA00DA8F4D = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +105,7 @@
 				D57BA7FF28469BFD00DA8F4D /* Assets.xcassets */,
 				D57BA80128469BFD00DA8F4D /* LaunchScreen.storyboard */,
 				D57BA80428469BFD00DA8F4D /* Info.plist */,
+				D551CA0F284940540019A464 /* Fonts */,
 			);
 			path = "Time to travel";
 			sourceTree = "<group>";

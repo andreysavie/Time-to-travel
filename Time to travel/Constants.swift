@@ -10,23 +10,49 @@ import UIKit
 
 
 public struct Fonts {
-    static let titleNameFont = UIFont.systemFont(ofSize: 20, weight: .semibold)
-    static let titleDurationFont = UIFont.systemFont(ofSize: 17, weight: .semibold)
-    static let titleDateFont = UIFont.systemFont(ofSize: 17, weight: .regular)
-    static let titleAirportFont = UIFont.systemFont(ofSize: 13, weight: .semibold)
-    static let titlePriceFont = UIFont.systemFont(ofSize: 13, weight: .semibold)
+    
+    static let unselectedFont = UIFont.systemFont(ofSize: 14, weight: .medium)
+    static let selectedFont = UIFont.systemFont(ofSize: 14, weight: .bold)
+
+    static let titleNameFont = UIFont.systemFont(ofSize: 16, weight: .bold)
+    static let underTitleNameFont = UIFont.systemFont(ofSize: 12, weight: .regular)
+    static let numbersFont = UIFont.systemFont(ofSize: 16, weight: .semibold)
+    static let mediumFont = UIFont.systemFont(ofSize: 15, weight: .medium)
+    static let largeFont = UIFont.systemFont(ofSize: 24, weight: .bold)
+    
+    static let secondTitleNameFont = UIFont.systemFont(ofSize: 14, weight: .bold)
+    static let secondMediumNameFont = UIFont.systemFont(ofSize: 15, weight: .medium)
+    
+    static let buttonFont = UIFont.systemFont(ofSize: 16, weight: .bold)
+
 }
 
 public struct Colors {
-    static let grayColor = UIColor(red: 100/255, green: 100/255, blue: 100/255, alpha: 1)
-    static var purpleColor = UIColor(red: 161/255, green: 22/255, blue: 204/255, alpha: 1)
-    static let blueColor = UIColor(red: 41/255, green: 109/255, blue: 255/255, alpha: 1)
-    static let greenColor = UIColor(red: 29/255, green: 179/255, blue: 34/255, alpha: 1)
-    static let indigoColor = UIColor(red: 98/255, green: 54/255, blue: 255/255, alpha: 1)
-    static let orangeColor = UIColor(red: 255/255, green: 159/255, blue: 79/255, alpha: 1)
-    static let navigationBarColor = UIColor(red: 249/255, green: 249/255, blue: 249/255, alpha: 0.94)
+    static let orangeColor = UIColor(red: 252/255, green: 154/255, blue: 125/255, alpha: 1)
+    static var backGrayColor = UIColor(red: 218/255, green: 218/255, blue: 218/255, alpha: 1)
+    static let titleGrayColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1)
+    static let underTitleGrayColor = UIColor(red: 127/255, green: 127/255, blue: 127/255, alpha: 1)
+    static let mediumGrayColor = UIColor(red: 85/255, green: 85/255, blue: 85/255, alpha: 1)
+    static let purpleColor = UIColor(red: 103/255, green: 96/255, blue: 212/255, alpha: 1)
+    
+    static let secondTitleGrayColor = UIColor(red: 100/255, green: 100/255, blue: 100/255, alpha: 1)
+    static let secondMediumGrayColor = UIColor(red: 113/255, green: 113/255, blue: 113/255, alpha: 1)
+    
+    static let likeRedColor = UIColor(red: 215/255, green: 85/255, blue: 85/255, alpha: 1)
+    
 }
 
+public struct GradientColors {
+    
+    static let foneFirstColor = UIColor(red: 103/255, green: 96/255, blue: 212/255, alpha: 1)
+    static let foneSecondColor = UIColor(red: 240/255, green: 161/255, blue: 198/255, alpha: 1)
+    static let foneThirdColor = UIColor(red: 253/255, green: 196/255, blue: 179/255, alpha: 1)
+    
+    static let buttonFirstColor = UIColor(red: 103/255, green: 96/255, blue: 212/255, alpha: 1)
+    static let buttonSecondColor = UIColor(red: 164/255, green: 53/255, blue: 252/255, alpha: 1)
+
+
+}
 public struct Labels {
     
     static let chooseFlight = "Выберите авиаперелет"

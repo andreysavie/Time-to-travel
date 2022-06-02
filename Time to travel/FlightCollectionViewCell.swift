@@ -22,68 +22,77 @@ class FlightCollectionViewCell: UICollectionViewCell {
     
     private lazy var flightNameLabel: UILabel = {
         let label = UILabel()
-//        label.font = Fonts.titleNameFont
+        label.font = Fonts.titleNameFont
+        label.textColor = Colors.titleGrayColor
         label.numberOfLines = 2
         return label
     }()
     
     private lazy var flightDurationLabel: UILabel = {
         let label = UILabel()
-
+        label.font = Fonts.underTitleNameFont
+        label.textColor = Colors.underTitleGrayColor
         return label
     }()
     
     private lazy var flightDepartureDateLabel: UILabel = {
         let label = UILabel()
-
+        label.font = Fonts.numbersFont
+        label.textColor = Colors.titleGrayColor
         return label
     }()
     
     private lazy var flightReturnDateLabel: UILabel = {
         let label = UILabel()
-
+        label.font = Fonts.numbersFont
+        label.textColor = Colors.titleGrayColor
         return label
     }()
     
     private lazy var departureAirportLabel: UILabel = {
         let label = UILabel()
-
+        label.font = Fonts.mediumFont
+        label.textColor = Colors.mediumGrayColor
         return label
     }()
     
     private lazy var arrivalAirportLabel: UILabel = {
         let label = UILabel()
-
+        label.font = Fonts.mediumFont
+        label.textColor = Colors.mediumGrayColor
         return label
     }()
     
     private lazy var departureIcon: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "airplane.departure", withConfiguration: UIImage.SymbolConfiguration(pointSize: 20))?.withTintColor(.darkGray, renderingMode: .alwaysOriginal)
+        imageView.image = UIImage(systemName: "airplane.departure", withConfiguration: UIImage.SymbolConfiguration(pointSize: 18))?.withTintColor(Colors.underTitleGrayColor, renderingMode: .alwaysOriginal)
         return imageView
     }()
     
     private lazy var arriveIcon: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "airplane.arrival", withConfiguration: UIImage.SymbolConfiguration(pointSize: 20))?.withTintColor(.darkGray, renderingMode: .alwaysOriginal)
+        imageView.image = UIImage(systemName: "airplane.arrival", withConfiguration: UIImage.SymbolConfiguration(pointSize: 18))?.withTintColor(Colors.underTitleGrayColor, renderingMode: .alwaysOriginal)
         return imageView
     }()
     
     private lazy var priceLabel: UILabel = {
         let label = UILabel()
-
+        label.font = Fonts.largeFont
+        label.textColor = Colors.purpleColor
         return label
     }()
     
     private lazy var likeButton: UIButton = {
         let button = UIButton()
 //        button.setImage(UIImage(systemName: "heart", withConfiguration: UIImage.SymbolConfiguration(pointSize: 20)), for: .normal)
-        button.tintColor = .black
-        button.backgroundColor = .lightGray
+        button.tintColor = Colors.titleGrayColor
+        button.backgroundColor = Colors.backGrayColor
         button.layer.cornerRadius = 8
         button.addTarget(self, action: #selector(tapOnLikeButton), for: .touchUpInside)
         return button
     }()
+    
+
     
     // MARK: INITIALIZATORS ============================================================================
     
@@ -116,22 +125,22 @@ class FlightCollectionViewCell: UICollectionViewCell {
         self.flight = flight
         self.isLiked = flight.isLiked
         
-        flightNameLabel.text = "\(flight.departureCity) 􀑓 \(flight.arrivalCity)"
+        flightNameLabel.text = "\(flight.departureCity.uppercased()) 􀄭 \(flight.arrivalCity.uppercased())"
         flightDurationLabel.text = "На 12 дней"
         
         flightDepartureDateLabel.text = "\(getFormattedDate(date: flight.departureDate, format: "dd.MM"))"
         flightReturnDateLabel.text = "\(getFormattedDate(date: flight.returnDate, format: "dd.MM"))"
         
-        departureAirportLabel.text = "\(flight.departureAirport) - \(flight.arrivalAirport)"
-        arrivalAirportLabel.text = "\(flight.arrivalAirport) - \(flight.departureAirport)"
+        departureAirportLabel.text = "\(flight.departureAirport.uppercased()) - \(flight.arrivalAirport.uppercased())"
+        arrivalAirportLabel.text = "\(flight.arrivalAirport.uppercased()) - \(flight.departureAirport.uppercased())"
         
         priceLabel.text = "\(flight.price) ₽"
 
         if isLiked == true {
-            self.likeButton.setImage(UIImage(systemName: "heart.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 20)), for: .normal)
-            self.likeButton.tintColor = .red
+            self.likeButton.setImage(UIImage(systemName: "heart.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 24)), for: .normal)
+            self.likeButton.tintColor = Colors.likeRedColor
         } else {
-            self.likeButton.setImage(UIImage(systemName: "heart", withConfiguration: UIImage.SymbolConfiguration(pointSize: 20)), for: .normal)
+            self.likeButton.setImage(UIImage(systemName: "heart", withConfiguration: UIImage.SymbolConfiguration(pointSize: 24)), for: .normal)
         }
         
         setupLayout()
@@ -152,7 +161,7 @@ class FlightCollectionViewCell: UICollectionViewCell {
         
         departureIcon.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(8)
-            make.top.equalTo(flightDurationLabel.snp.bottom).offset(16)
+            make.top.equalTo(flightDurationLabel.snp.bottom).offset(12)
         }
         
         departureAirportLabel.snp.makeConstraints { make in
@@ -187,11 +196,8 @@ class FlightCollectionViewCell: UICollectionViewCell {
         
         likeButton.snp.makeConstraints { make in
             make.trailing.top.equalToSuperview().inset(8)
-            make.width.height.equalTo(32)
+            make.width.height.equalTo(36)
         }
-        
-        
-        
     }
     
     // MARK: Objc METHODS ==============================================================================
