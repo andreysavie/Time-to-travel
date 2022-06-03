@@ -20,18 +20,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let tabBarController = UITabBarController()
         
         let flightsListNavigationController = UINavigationController(rootViewController: FlightsListViewController())
-        
-        let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20)]
 
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = .white
 
-        flightsListNavigationController.tabBarItem = UITabBarItem(title: "ПОИСК", image: UIImage(systemName: "airplane"), selectedImage: UIImage(systemName: "airplane"))
-        flightsListNavigationController.tabBarItem.setTitleTextAttributes(attributes as [NSAttributedString.Key : Any],for: .normal)
+        flightsListNavigationController.tabBarItem = UITabBarItem(title: "Поиск", image: UIImage(systemName: "airplane"), selectedImage: UIImage(systemName: "airplane"))
+        flightsListNavigationController.tabBarItem.setTitleTextAttributes(Attributes.nabBarItemAttributes, for: .normal)
         
-        flightsListNavigationController.navigationBar.titleTextAttributes = attributes
-        flightsListNavigationController.navigationBar.topItem?.title = "ВЫБЕРИТЕ АВИАПЕРЕЛЕТ"
+        flightsListNavigationController.navigationBar.titleTextAttributes = Attributes.navBarTitleTextAttributes
+        flightsListNavigationController.navigationBar.topItem?.title = "Выберите авиаперелёт"
         flightsListNavigationController.navigationBar.barTintColor = UIColor.systemGray5
         flightsListNavigationController.navigationBar.standardAppearance = appearance
         flightsListNavigationController.navigationBar.scrollEdgeAppearance = flightsListNavigationController.navigationBar.standardAppearance
@@ -40,18 +38,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         tabBarController.tabBar.backgroundColor = .white
         tabBarController.tabBar.layer.borderWidth = 1
         tabBarController.tabBar.layer.borderColor = UIColor.gray.cgColor
-
         
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
         
-        for family in UIFont.familyNames.sorted() {
-            let names = UIFont.fontNames(forFamilyName: family)
-            print("Family: \(family) Font names: \(names)")
-        }
-        
         return true
-        
     }
     
 }

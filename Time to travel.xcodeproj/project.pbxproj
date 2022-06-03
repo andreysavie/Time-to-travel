@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		1DD3C0BA98590439C8F3EB42 /* Pods_Time_to_travel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8493C83B42C057A57F08CE8 /* Pods_Time_to_travel.framework */; };
+		D568C452284A110F00418D97 /* FlightPropsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D568C451284A110F00418D97 /* FlightPropsTableViewCell.swift */; };
+		D568C454284A112700418D97 /* FlightDateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D568C453284A112700418D97 /* FlightDateTableViewCell.swift */; };
+		D568C456284A113400418D97 /* PassengersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D568C455284A113400418D97 /* PassengersTableViewCell.swift */; };
+		D568C458284A114A00418D97 /* FlightClassTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D568C457284A114A00418D97 /* FlightClassTableViewCell.swift */; };
+		D568C45A284A128D00418D97 /* PurshaseButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D568C459284A128D00418D97 /* PurshaseButtonTableViewCell.swift */; };
+		D568C45D284A150400418D97 /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D568C45C284A150400418D97 /* GradientButton.swift */; };
 		D57BA7F728469BFB00DA8F4D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57BA7F628469BFB00DA8F4D /* AppDelegate.swift */; };
 		D57BA7FB28469BFB00DA8F4D /* FlightsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57BA7FA28469BFB00DA8F4D /* FlightsListViewController.swift */; };
 		D57BA7FE28469BFB00DA8F4D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D57BA7FC28469BFB00DA8F4D /* Main.storyboard */; };
@@ -23,6 +29,12 @@
 		4C0A6BEC549406DC7E35B2DA /* Pods-Time to travel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Time to travel.debug.xcconfig"; path = "Target Support Files/Pods-Time to travel/Pods-Time to travel.debug.xcconfig"; sourceTree = "<group>"; };
 		B8493C83B42C057A57F08CE8 /* Pods_Time_to_travel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Time_to_travel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D551CA0C284937870019A464 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		D568C451284A110F00418D97 /* FlightPropsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightPropsTableViewCell.swift; sourceTree = "<group>"; };
+		D568C453284A112700418D97 /* FlightDateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightDateTableViewCell.swift; sourceTree = "<group>"; };
+		D568C455284A113400418D97 /* PassengersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassengersTableViewCell.swift; sourceTree = "<group>"; };
+		D568C457284A114A00418D97 /* FlightClassTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightClassTableViewCell.swift; sourceTree = "<group>"; };
+		D568C459284A128D00418D97 /* PurshaseButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurshaseButtonTableViewCell.swift; sourceTree = "<group>"; };
+		D568C45C284A150400418D97 /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
 		D57BA7F328469BFA00DA8F4D /* Time to travel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Time to travel.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D57BA7F628469BFB00DA8F4D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D57BA7FA28469BFB00DA8F4D /* FlightsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightsListViewController.swift; sourceTree = "<group>"; };
@@ -73,6 +85,26 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		D568C45B284A129700418D97 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				D568C451284A110F00418D97 /* FlightPropsTableViewCell.swift */,
+				D568C453284A112700418D97 /* FlightDateTableViewCell.swift */,
+				D568C455284A113400418D97 /* PassengersTableViewCell.swift */,
+				D568C457284A114A00418D97 /* FlightClassTableViewCell.swift */,
+				D568C459284A128D00418D97 /* PurshaseButtonTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		D568C45E284A151C00418D97 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D568C45C284A150400418D97 /* GradientButton.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		D57BA7EA28469BFA00DA8F4D = {
 			isa = PBXGroup;
 			children = (
@@ -94,12 +126,14 @@
 		D57BA7F528469BFA00DA8F4D /* Time to travel */ = {
 			isa = PBXGroup;
 			children = (
+				D57BA7F628469BFB00DA8F4D /* AppDelegate.swift */,
 				D57BA80E2846AEB300DA8F4D /* Constants.swift */,
 				D57BA80C28469D5200DA8F4D /* Model.swift */,
-				D57BA7F628469BFB00DA8F4D /* AppDelegate.swift */,
 				D57BA7FA28469BFB00DA8F4D /* FlightsListViewController.swift */,
 				D57BA8102846B9FA00DA8F4D /* FlightCollectionViewCell.swift */,
 				D57BA80A28469D3200DA8F4D /* FlightDetailsViewController.swift */,
+				D568C45B284A129700418D97 /* Cells */,
+				D568C45E284A151C00418D97 /* View */,
 				D551CA0C284937870019A464 /* README.md */,
 				D57BA7FC28469BFB00DA8F4D /* Main.storyboard */,
 				D57BA7FF28469BFD00DA8F4D /* Assets.xcassets */,
@@ -225,12 +259,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D568C456284A113400418D97 /* PassengersTableViewCell.swift in Sources */,
+				D568C45D284A150400418D97 /* GradientButton.swift in Sources */,
 				D57BA8112846B9FA00DA8F4D /* FlightCollectionViewCell.swift in Sources */,
+				D568C452284A110F00418D97 /* FlightPropsTableViewCell.swift in Sources */,
+				D568C45A284A128D00418D97 /* PurshaseButtonTableViewCell.swift in Sources */,
 				D57BA80D28469D5200DA8F4D /* Model.swift in Sources */,
 				D57BA7FB28469BFB00DA8F4D /* FlightsListViewController.swift in Sources */,
 				D57BA7F728469BFB00DA8F4D /* AppDelegate.swift in Sources */,
+				D568C458284A114A00418D97 /* FlightClassTableViewCell.swift in Sources */,
 				D57BA80B28469D3200DA8F4D /* FlightDetailsViewController.swift in Sources */,
 				D57BA80F2846AEB300DA8F4D /* Constants.swift in Sources */,
+				D568C454284A112700418D97 /* FlightDateTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,7 +346,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -360,7 +400,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

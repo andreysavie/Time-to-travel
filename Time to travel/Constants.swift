@@ -40,6 +40,9 @@ public struct Colors {
     
     static let likeRedColor = UIColor(red: 215/255, green: 85/255, blue: 85/255, alpha: 1)
     
+    static let secondBackGrayColor = UIColor(red: 118/255, green: 118/255, blue: 128/255, alpha: 0.12)
+
+    
 }
 
 public struct GradientColors {
@@ -97,16 +100,39 @@ public struct Constants {
 
 }
 
+public struct Attributes {
+    
+    static let nabBarItemAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20)]
+    static let navBarTitleTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20)]
+    static let classSemgentedControlAttributes = [
+        NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12, weight: .bold),
+        NSAttributedString.Key.foregroundColor: Colors.secondTitleGrayColor
+    ]
+    static let flightPropsLabelAttributes = [
+        NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14, weight: .bold),
+        NSAttributedString.Key.foregroundColor: Colors.secondTitleGrayColor
+    ]
+    static let airportNameLabelAttributes = [
+        NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24, weight: .bold),
+        NSAttributedString.Key.foregroundColor: Colors.titleGrayColor
+    ]
+    static let cityLabelAttributes = [
+        NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15, weight: .medium),
+        NSAttributedString.Key.foregroundColor: Colors.secondMediumGrayColor
+    ]
+    
+    
+    
+
+
+}
+
 public extension UIView {
     
     func addSubviews(_ subviews: UIView...) {
           subviews.forEach { addSubview($0) }
       }
     
-//    func registerCells (tableview: UITableView, id: String, cells: UITableViewCell...) {
-//        cells.forEach { tableview.register($0, forCellReuseIdentifier: id) }
-//    }
-//    
     func getFormattedDate(date: Date, format: String) -> String {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = format
@@ -115,3 +141,41 @@ public extension UIView {
     }
 
 }
+
+public extension UITableViewCell {
+    
+    func getIcon (name: String, size: CGFloat) -> UIImageView {
+        let imageView = UIImageView()
+        imageView.image = UIImage(systemName: name, withConfiguration: UIImage.SymbolConfiguration(pointSize: size))?.withTintColor(Colors.secondMediumGrayColor, renderingMode: .alwaysOriginal)
+        return imageView
+    }
+    
+    func getLabel (text: String, size: CGFloat, color: UIColor, weight: UIFont.Weight) -> UILabel {
+        let label = UILabel()
+        label.text = text
+        label.font = UIFont.systemFont(ofSize: size, weight: weight)
+        label.textColor = color
+        return label
+    }
+    
+    func getLabelShort (_ attributes: [NSAttributedString.Key : Any], text: String) -> UILabel {
+        let label = UILabel()
+//        label.attributedText = NSAttributedString(string: text, attributes: attributes)
+        label.attributedText = NSAttributedString(string: text, attributes: attributes)
+        return label
+    }
+    
+    func getButton (title: String) -> UIButton {
+        let button = UIButton()
+        button.setTitle(title, for: .normal)
+        button.titleLabel?.textColor = UIColor.darkGray
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+        button.layer.cornerRadius = 4
+        button.layer.shadowOffset = CGSize(width: 0.0, height: 3.0)
+        button.layer.shadowRadius = 5.0
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOpacity = 0.0
+        return button
+    }
+}
+

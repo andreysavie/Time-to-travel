@@ -14,6 +14,9 @@ class FlightCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "FlightCollectionViewCell"
     
+    var likeButtonAction: (()->())?
+
+    
     // MARK: PROPERTIES ============================================================================
 
     private var flight: Flight?
@@ -85,14 +88,11 @@ class FlightCollectionViewCell: UICollectionViewCell {
     private lazy var likeButton: UIButton = {
         let button = UIButton()
 //        button.setImage(UIImage(systemName: "heart", withConfiguration: UIImage.SymbolConfiguration(pointSize: 20)), for: .normal)
-        button.tintColor = Colors.titleGrayColor
         button.backgroundColor = Colors.backGrayColor
         button.layer.cornerRadius = 8
         button.addTarget(self, action: #selector(tapOnLikeButton), for: .touchUpInside)
         return button
     }()
-    
-
     
     // MARK: INITIALIZATORS ============================================================================
     
@@ -125,7 +125,7 @@ class FlightCollectionViewCell: UICollectionViewCell {
         self.flight = flight
         self.isLiked = flight.isLiked
         
-        flightNameLabel.text = "\(flight.departureCity.uppercased()) 􀄭 \(flight.arrivalCity.uppercased())"
+        flightNameLabel.text = "\(flight.departureCity.uppercased()) ⇆ \(flight.arrivalCity.uppercased())"
         flightDurationLabel.text = "На 12 дней"
         
         flightDepartureDateLabel.text = "\(getFormattedDate(date: flight.departureDate, format: "dd.MM"))"
@@ -141,6 +141,7 @@ class FlightCollectionViewCell: UICollectionViewCell {
             self.likeButton.tintColor = Colors.likeRedColor
         } else {
             self.likeButton.setImage(UIImage(systemName: "heart", withConfiguration: UIImage.SymbolConfiguration(pointSize: 24)), for: .normal)
+            self.likeButton.tintColor = Colors.underTitleGrayColor
         }
         
         setupLayout()
@@ -203,6 +204,6 @@ class FlightCollectionViewCell: UICollectionViewCell {
     // MARK: Objc METHODS ==============================================================================
 
     @objc private func tapOnLikeButton() {
-        
+        likeButtonAction?()
     }
 }

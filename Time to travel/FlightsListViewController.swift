@@ -64,22 +64,16 @@ class FlightsListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         collectionView.dataSource = self
         collectionView.delegate = self
         setupLayout()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         collectionView.reloadData()
     }
     
-    
-    
-    
     private func setupLayout() {
-        
         gradient.frame = view.bounds
         view.layer.addSublayer(gradient)
         view.addSubview(collectionView)
@@ -94,17 +88,6 @@ class FlightsListViewController: UIViewController {
     }
     
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -123,6 +106,11 @@ extension FlightsListViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FlightCollectionViewCell.identifier, for: indexPath) as? FlightCollectionViewCell else { return UICollectionViewCell() }
         cell.setConfigureOfCell(flight: flightsArray[indexPath.row])
         
+        cell.likeButtonAction = { [weak self] in
+            flightsArray[indexPath.row].isLiked.toggle()
+            self?.collectionView.reloadData()
+        }
+        
         return cell
         
     }
@@ -136,6 +124,7 @@ extension FlightsListViewController: UICollectionViewDelegate {
         
         let flightDetailsViewController = FlightDetailsViewController(flight: flightsArray[indexPath.row])
         navigationController?.pushViewController(flightDetailsViewController, animated: true)
+//        navigationController?.present(flightDetailsViewController, animated: true)
         collectionView.deselectItem(at: indexPath, animated: true)
     }
 }
@@ -144,6 +133,6 @@ extension FlightsListViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: floor(collectionView.frame.width - 32), height: 120)
+        return CGSize(width: floor(collectionView.frame.width - 32), height: 130)
     }
 }
