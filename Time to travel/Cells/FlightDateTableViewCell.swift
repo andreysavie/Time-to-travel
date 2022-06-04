@@ -26,7 +26,7 @@ class FlightDateTableViewCell: UITableViewCell {
     
     private lazy var flightDate = getLabel(
         text: "",
-        font: Fonts.secondTitleNameFont,
+        font: Fonts.secondLargeNameFont,
         color: Colors.secondMediumGrayColor
     )
     

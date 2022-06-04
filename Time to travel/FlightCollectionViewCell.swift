@@ -8,8 +8,6 @@
 import UIKit
 import SnapKit
 
-// MARK: УБРАТЬ ПОВТОРЯЮЩИЙСЯ КОД!!!
-
 class FlightCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "FlightCollectionViewCell"
@@ -21,83 +19,62 @@ class FlightCollectionViewCell: UICollectionViewCell {
     private var flight: Flight?
     private var isLiked: Bool?
     
-//    private lazy var flightNameLabel: UILabel = {
-//        let label = UILabel()
-//        label.font = Fonts.titleNameFont
-//        label.textColor = Colors.titleGrayColor
-//        label.numberOfLines = 2
-//        return label
-//    }()
     
     private lazy var flightNameLabel = getLabel(
         text: "",
         font: Fonts.titleNameFont,
-        color: Colors.titleGrayColor)
+        color: Colors.titleGrayColor
+    )
     
-    private lazy var flightDurationLabel: UILabel = {
-        let label = UILabel()
-        label.font = Fonts.underTitleNameFont
-        label.textColor = Colors.underTitleGrayColor
-        return label
-    }()
+    private lazy var flightDurationLabel = getLabel(
+        text: "",
+        font: Fonts.underTitleNameFont,
+        color: Colors.underTitleGrayColor
+    )
     
-    private lazy var flightDepartureDateLabel: UILabel = {
-        let label = UILabel()
-        label.font = Fonts.numbersFont
-        label.textColor = Colors.titleGrayColor
-        return label
-    }()
+    private lazy var flightDepartureDateLabel = getLabel(
+        text: "",
+        font: Fonts.numbersFont,
+        color: Colors.titleGrayColor
+    )
     
-    private lazy var flightReturnDateLabel: UILabel = {
-        let label = UILabel()
-        label.font = Fonts.numbersFont
-        label.textColor = Colors.titleGrayColor
-        return label
-    }()
+    private lazy var flightReturnDateLabel = getLabel(
+        text: "",
+        font: Fonts.numbersFont,
+        color: Colors.titleGrayColor
+    )
     
-    private lazy var departureAirportLabel: UILabel = {
-        let label = UILabel()
-        label.font = Fonts.mediumFont
-        label.textColor = Colors.mediumGrayColor
-        return label
-    }()
+    private lazy var departureAirportLabel = getLabel(
+        text: "",
+        font: Fonts.mediumFont,
+        color: Colors.mediumGrayColor
+    )
     
-    private lazy var arrivalAirportLabel: UILabel = {
-        let label = UILabel()
-        label.font = Fonts.mediumFont
-        label.textColor = Colors.mediumGrayColor
-        return label
-    }()
+    private lazy var arrivalAirportLabel = getLabel(
+        text: "",
+        font: Fonts.mediumFont,
+        color: Colors.mediumGrayColor
+    )
     
-    private lazy var departureIcon: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "airplane.departure", withConfiguration: UIImage.SymbolConfiguration(pointSize: 18))?.withTintColor(Colors.underTitleGrayColor, renderingMode: .alwaysOriginal)
-        return imageView
-    }()
+    private lazy var priceLabel = getLabel(
+        text: "",
+        font: Fonts.largeFont,
+        color: Colors.purpleColor
+    )
     
-    private lazy var arriveIcon: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "airplane.arrival", withConfiguration: UIImage.SymbolConfiguration(pointSize: 18))?.withTintColor(Colors.underTitleGrayColor, renderingMode: .alwaysOriginal)
-        return imageView
-    }()
+    private lazy var departureIcon = getIcon(name: "airplane.departure", size: 18)
     
-    private lazy var priceLabel: UILabel = {
-        let label = UILabel()
-        label.font = Fonts.largeFont
-        label.textColor = Colors.purpleColor
-        return label
-    }()
+    private lazy var arriveIcon = getIcon(name: "airplane.arrival", size: 18)
     
     private lazy var likeButton: UIButton = {
         let button = UIButton()
-//        button.setImage(UIImage(systemName: "heart", withConfiguration: UIImage.SymbolConfiguration(pointSize: 20)), for: .normal)
         button.backgroundColor = Colors.backGrayColor
         button.layer.cornerRadius = 8
         button.addTarget(self, action: #selector(tapOnLikeButton), for: .touchUpInside)
         return button
     }()
     
-    // MARK: INITIALIZATORS ============================================================================
+    // MARK: INITS ============================================================================
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -116,6 +93,9 @@ class FlightCollectionViewCell: UICollectionViewCell {
             departureIcon,
             arriveIcon
         )
+        
+        setupLayout()
+
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -127,7 +107,6 @@ class FlightCollectionViewCell: UICollectionViewCell {
     func setConfigureOfCell(flight: Flight) {
         
         self.flight = flight
-        self.isLiked = flight.isLiked
         
         let startDate = convertToDate(strDate: flight.startDate)
         let endDate = convertToDate(strDate: flight.endDate)
@@ -136,25 +115,13 @@ class FlightCollectionViewCell: UICollectionViewCell {
         
         flightNameLabel.text = "\(flight.startCity.uppercased()) ⇆ \(flight.endCity.uppercased())"
         flightDurationLabel.text = "На \(dateDiff) дней"
-        
-        flightDepartureDateLabel.text =  "\(convertDate(longDate: flight.startDate, format: "dd.MM"))" //\(flight.startDate)"
+        flightDepartureDateLabel.text =  "\(convertDate(longDate: flight.startDate, format: "dd.MM"))"
         flightReturnDateLabel.text = "\(convertDate(longDate: flight.endDate, format: "dd.MM"))"
-        
         departureAirportLabel.text = "\(flight.startCityCode.uppercased()) - \(flight.endCityCode.uppercased())"
         arrivalAirportLabel.text = "\(flight.endCityCode.uppercased()) - \(flight.startCityCode.uppercased())"
-        
         priceLabel.text = "\(flight.price) ₽"
-
-        if isLiked == true {
-            self.likeButton.setImage(UIImage(systemName: "heart.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 24)), for: .normal)
-            self.likeButton.tintColor = Colors.likeRedColor
-        } else {
-            self.likeButton.setImage(UIImage(systemName: "heart", withConfiguration: UIImage.SymbolConfiguration(pointSize: 24)), for: .normal)
-            self.likeButton.tintColor = Colors.underTitleGrayColor
-        }
         
-        setupLayout()
-        
+        checkIsLiked()
     }
     
     private func setupLayout() {
@@ -167,7 +134,6 @@ class FlightCollectionViewCell: UICollectionViewCell {
             make.leading.equalToSuperview().inset(8)
             make.top.equalTo(flightNameLabel.snp.bottom).offset(3)
         }
-        
         
         departureIcon.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(8)
@@ -183,7 +149,6 @@ class FlightCollectionViewCell: UICollectionViewCell {
             make.centerY.equalTo(departureIcon)
             make.trailing.equalTo(departureAirportLabel.snp.trailing)
         }
-        
         
         arriveIcon.snp.makeConstraints { make in
             make.centerY.equalTo(departureIcon)
@@ -208,6 +173,15 @@ class FlightCollectionViewCell: UICollectionViewCell {
             make.trailing.top.equalToSuperview().inset(8)
             make.width.height.equalTo(36)
         }
+    }
+    
+    private func checkIsLiked() {
+        guard let flight = flight else { return }
+        let heart = flight.isLiked ? "heart.fill" : "heart"
+        let color = flight.isLiked ? Colors.likeRedColor : Colors.underTitleGrayColor
+        
+        likeButton.setImage(UIImage(systemName: heart, withConfiguration: UIImage.SymbolConfiguration(pointSize: 24)), for: .normal)
+        likeButton.tintColor = color
     }
     
     // MARK: Objc METHODS ==============================================================================

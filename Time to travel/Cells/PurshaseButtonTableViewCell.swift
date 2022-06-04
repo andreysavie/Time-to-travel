@@ -11,6 +11,8 @@ class PurshaseButtonTableViewCell: UITableViewCell {
     
     static let identifirer = "PurshaseButtonTableViewCell"
     
+    // MARK: PROPERTIES ============================================================================
+
     private lazy var purchaseButton: GradientButton = {
         let button = GradientButton()
         button.setTitle("Перейти к покупке", for: .normal)
@@ -22,6 +24,8 @@ class PurshaseButtonTableViewCell: UITableViewCell {
         return button
     }()
     
+    // MARK: INITS ============================================================================
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.backgroundColor = .clear

@@ -14,7 +14,7 @@
 		D568C458284A114A00418D97 /* FlightClassTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D568C457284A114A00418D97 /* FlightClassTableViewCell.swift */; };
 		D568C45A284A128D00418D97 /* PurshaseButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D568C459284A128D00418D97 /* PurshaseButtonTableViewCell.swift */; };
 		D568C45D284A150400418D97 /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D568C45C284A150400418D97 /* GradientButton.swift */; };
-		D568C462284A8BE100418D97 /* JSONModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D568C461284A8BE100418D97 /* JSONModel.swift */; };
+		D568C462284A8BE100418D97 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D568C461284A8BE100418D97 /* Model.swift */; };
 		D57BA7F728469BFB00DA8F4D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57BA7F628469BFB00DA8F4D /* AppDelegate.swift */; };
 		D57BA7FB28469BFB00DA8F4D /* FlightsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57BA7FA28469BFB00DA8F4D /* FlightsListViewController.swift */; };
 		D57BA7FE28469BFB00DA8F4D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D57BA7FC28469BFB00DA8F4D /* Main.storyboard */; };
@@ -35,7 +35,7 @@
 		D568C457284A114A00418D97 /* FlightClassTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightClassTableViewCell.swift; sourceTree = "<group>"; };
 		D568C459284A128D00418D97 /* PurshaseButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurshaseButtonTableViewCell.swift; sourceTree = "<group>"; };
 		D568C45C284A150400418D97 /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
-		D568C461284A8BE100418D97 /* JSONModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONModel.swift; sourceTree = "<group>"; };
+		D568C461284A8BE100418D97 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		D57BA7F328469BFA00DA8F4D /* Time to travel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Time to travel.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D57BA7F628469BFB00DA8F4D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D57BA7FA28469BFB00DA8F4D /* FlightsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightsListViewController.swift; sourceTree = "<group>"; };
@@ -128,7 +128,7 @@
 			children = (
 				D57BA7F628469BFB00DA8F4D /* AppDelegate.swift */,
 				D57BA80E2846AEB300DA8F4D /* Constants.swift */,
-				D568C461284A8BE100418D97 /* JSONModel.swift */,
+				D568C461284A8BE100418D97 /* Model.swift */,
 				D57BA7FA28469BFB00DA8F4D /* FlightsListViewController.swift */,
 				D57BA8102846B9FA00DA8F4D /* FlightCollectionViewCell.swift */,
 				D57BA80A28469D3200DA8F4D /* FlightDetailsViewController.swift */,
@@ -262,7 +262,7 @@
 				D568C456284A113400418D97 /* PassengersTableViewCell.swift in Sources */,
 				D568C45D284A150400418D97 /* GradientButton.swift in Sources */,
 				D57BA8112846B9FA00DA8F4D /* FlightCollectionViewCell.swift in Sources */,
-				D568C462284A8BE100418D97 /* JSONModel.swift in Sources */,
+				D568C462284A8BE100418D97 /* Model.swift in Sources */,
 				D568C452284A110F00418D97 /* FlightPropsTableViewCell.swift in Sources */,
 				D568C45A284A128D00418D97 /* PurshaseButtonTableViewCell.swift in Sources */,
 				D57BA7FB28469BFB00DA8F4D /* FlightsListViewController.swift in Sources */,

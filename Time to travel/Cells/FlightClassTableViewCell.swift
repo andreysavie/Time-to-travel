@@ -11,10 +11,10 @@ class FlightClassTableViewCell: UITableViewCell {
     
     static let identifirer = "FlightClassTableViewCell"
 
+    private let classes = ["Эконом", "Бизнес", "Первый"]
+
     // MARK: PROPERTIES ============================================================================
 
-    private let classes = ["Эконом", "Бизнес", "Первый"]
-    
     private lazy var classlabel = getLabel(
         text: "Класс перелёта",
         font: Fonts.secondTitleNameFont,

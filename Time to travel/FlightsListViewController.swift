@@ -10,9 +10,15 @@ import SnapKit
 
 class FlightsListViewController: UIViewController {
     
-//    private var flightsArray = NetworkManager.shared.flightsArray
+    // MARK: PROPERTIES ============================================================================
+
+    private lazy var collectionView: UICollectionView = {
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .clear
+        return collectionView
+    }()
     
-    static var layout: UICollectionViewFlowLayout = {
+    private lazy var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = Constants.indent
         layout.scrollDirection = .vertical
@@ -20,54 +26,21 @@ class FlightsListViewController: UIViewController {
         return layout
     }()
     
-    private lazy var rightBarButtonItem: UIBarButtonItem = {
-        let rightBarButtonItem = UIBarButtonItem (
-            image: UIImage(systemName: "heart"),
-            style: .plain ,
-            target: self,
-            action: #selector(likeButtonPressed))
-        rightBarButtonItem.tintColor = Colors.purpleColor
-        return rightBarButtonItem
-    }()
+    private lazy var gradient = Gradients.flightsListGradient
+
     
-    private lazy var gradient: CAGradientLayer = {
-        let gradient = CAGradientLayer()
-        gradient.type = .axial
-        gradient.colors = [
-            GradientColors.foneFirstColor.cgColor,
-            GradientColors.foneSecondColor.cgColor,
-            GradientColors.foneThirdColor.cgColor
-        ]
-                
-        gradient.startPoint = CGPoint(x: 1, y: 0)
-        gradient.endPoint = CGPoint(x: 0, y: 1)
-        
-        gradient.locations = [0, 0.55, 1]
-        return gradient
-    }()
-    
-    
-    private lazy var collectionView: UICollectionView = {
-        
-        let collectionView = UICollectionView(
-            frame: .zero,
-            collectionViewLayout: FlightsListViewController.layout
-        )
-        collectionView.backgroundColor = .clear
+    // MARK: INITS ============================================================================
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
         collectionView.register(
             FlightCollectionViewCell.self,
             forCellWithReuseIdentifier: FlightCollectionViewCell.identifier)
-        //        collection.register(
-        //            ProgressCollectionViewCell.self,
-        //            forCellWithReuseIdentifier: String(describing: ProgressCollectionViewCell.self))
-        return collectionView
-    }()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+
         collectionView.dataSource = self
         collectionView.delegate = self
+        
         setupLayout()
     }
     
@@ -75,6 +48,8 @@ class FlightsListViewController: UIViewController {
         collectionView.reloadData()
     }
     
+    // MARK: METHODS ============================================================================
+
     private func setupLayout() {
         gradient.frame = view.bounds
         view.layer.addSublayer(gradient)
@@ -85,12 +60,9 @@ class FlightsListViewController: UIViewController {
         }
     }
     
-    @objc func likeButtonPressed() {
-        
-    }
-    
 }
 
+// MARK: EXTENSIONS ============================================================================
 
 
 extension FlightsListViewController: UICollectionViewDataSource {
@@ -112,12 +84,8 @@ extension FlightsListViewController: UICollectionViewDataSource {
             NetworkManager.shared.flightsArray[indexPath.row].isLiked.toggle()
             self?.collectionView.reloadData()
         }
-        
         return cell
-        
     }
-    
-    
 }
 
 extension FlightsListViewController: UICollectionViewDelegate {
@@ -126,7 +94,6 @@ extension FlightsListViewController: UICollectionViewDelegate {
         
         let flightDetailsViewController = FlightDetailsViewController(flight: NetworkManager.shared.flightsArray[indexPath.row])
         navigationController?.pushViewController(flightDetailsViewController, animated: true)
-//        navigationController?.present(flightDetailsViewController, animated: true)
         collectionView.deselectItem(at: indexPath, animated: true)
     }
 }

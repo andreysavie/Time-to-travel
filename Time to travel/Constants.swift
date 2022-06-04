@@ -38,10 +38,10 @@ public struct Colors {
     
     static let secondTitleGrayColor = UIColor(red: 100/255, green: 100/255, blue: 100/255, alpha: 1)
     static let secondMediumGrayColor = UIColor(red: 113/255, green: 113/255, blue: 113/255, alpha: 1)
+    static let secondBackGrayColor = UIColor(red: 118/255, green: 118/255, blue: 128/255, alpha: 0.12)
     
     static let likeRedColor = UIColor(red: 215/255, green: 85/255, blue: 85/255, alpha: 1)
     
-    static let secondBackGrayColor = UIColor(red: 118/255, green: 118/255, blue: 128/255, alpha: 0.12)
 
     
 }
@@ -54,8 +54,24 @@ public struct GradientColors {
     
     static let buttonFirstColor = UIColor(red: 103/255, green: 96/255, blue: 212/255, alpha: 1)
     static let buttonSecondColor = UIColor(red: 164/255, green: 53/255, blue: 252/255, alpha: 1)
+}
 
-
+public struct Gradients {
+    
+    static var flightsListGradient: CAGradientLayer = {
+        let gradient = CAGradientLayer()
+        gradient.type = .axial
+        gradient.colors = [
+            GradientColors.foneFirstColor.cgColor,
+            GradientColors.foneSecondColor.cgColor,
+            GradientColors.foneThirdColor.cgColor
+        ]
+        gradient.startPoint = CGPoint(x: 1, y: 0)
+        gradient.endPoint = CGPoint(x: 0, y: 1)
+        gradient.locations = [0, 0.55, 1]
+        return gradient
+    }()
+    
 }
 public struct Labels {
     
@@ -121,10 +137,6 @@ public struct Attributes {
         NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15, weight: .medium),
         NSAttributedString.Key.foregroundColor: Colors.secondMediumGrayColor
     ]
-    
-    
-    
-
 
 }
 
