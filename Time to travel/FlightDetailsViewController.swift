@@ -9,18 +9,15 @@ import UIKit
 
 class FlightDetailsViewController: UIViewController {
 
-    private var flight: Flight?
-    private var flightName: String = ""
-    
-    var likeButtonAction: (()->())?
+    // MARK: PROPERTIES ==============================================================================
 
-    private let tableView: UITableView = {
+    private var flight: Flight?
         
+    private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.isScrollEnabled = false
         tableView.separatorInset = .zero
         tableView.backgroundColor = .white
-        
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         return tableView
     }()
@@ -43,15 +40,14 @@ class FlightDetailsViewController: UIViewController {
             GradientColors.foneSecondColor.cgColor,
             GradientColors.foneThirdColor.cgColor
         ]
-                
         gradient.startPoint = CGPoint(x: 0, y: 0)
         gradient.endPoint = CGPoint(x: 1, y: 1)
-        
         gradient.locations = [0, 0.55, 1]
         return gradient
     }()
     
-    
+    // MARK: INITS ==============================================================================
+
     init (flight: Flight?) {
         super.init(nibName: nil, bundle: nil)
         self.flight = flight
@@ -67,9 +63,37 @@ class FlightDetailsViewController: UIViewController {
         gradient.frame = view.bounds
         view.layer.addSublayer(gradient)
 
+        // MARK: починить картинку!
         self.tableView.addSubview(backgroundImage)
         self.view.addSubview(tableView)
+                
+        setupLayout()
         
+        tableView.register(FlightPropsTableViewCell.self, forCellReuseIdentifier: FlightPropsTableViewCell.identifirer)
+        tableView.register(FlightDateTableViewCell.self, forCellReuseIdentifier: FlightDateTableViewCell.identifirer)
+        tableView.register(PassengersTableViewCell.self, forCellReuseIdentifier: PassengersTableViewCell.identifirer)
+        tableView.register(FlightClassTableViewCell.self, forCellReuseIdentifier: FlightClassTableViewCell.identifirer)
+        tableView.register(PurshaseButtonTableViewCell.self, forCellReuseIdentifier: PurshaseButtonTableViewCell.identifirer)
+        
+    
+        tableView.dataSource = self
+        tableView.delegate = self
+        
+        let rightBarButtonItem = UIBarButtonItem(
+            image: UIImage(),
+            style: .plain ,
+            target: self,
+            action: #selector(tapOnLikeButton)
+        )
+        
+        rightBarButtonItem.tintColor = Colors.underTitleGrayColor
+        navigationItem.rightBarButtonItem = rightBarButtonItem
+        checkIsLiked()
+    }
+    
+    // MARK: METHODS ==============================================================================
+
+    private func setupLayout() {
         tableView.snp.makeConstraints { make in
             make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
             make.top.equalTo(view.safeAreaLayoutGuide).inset(8)
@@ -81,61 +105,27 @@ class FlightDetailsViewController: UIViewController {
             make.height.equalTo(200)
             make.top.equalTo(tableView).offset(50)
         }
-        
-        tableView.register(FlightPropsTableViewCell.self, forCellReuseIdentifier: FlightPropsTableViewCell.identifirer)
-        
-        tableView.register(FlightDateTableViewCell.self, forCellReuseIdentifier: FlightDateTableViewCell.identifirer)
-
-        tableView.register(PassengersTableViewCell.self, forCellReuseIdentifier: PassengersTableViewCell.identifirer)
-
-        tableView.register(FlightClassTableViewCell.self, forCellReuseIdentifier: FlightClassTableViewCell.identifirer)
-
-        tableView.register(PurshaseButtonTableViewCell.self, forCellReuseIdentifier: PurshaseButtonTableViewCell.identifirer)
-        
-        tableView.dataSource = self
-        tableView.delegate = self
-        
-        let rightBarButtonItem = UIBarButtonItem(
-//            image: UIImage(systemName: "heart", withConfiguration: UIImage.SymbolConfiguration(pointSize: 24)),
-            image: UIImage(),
-            style: .plain ,
-            target: self,
-            action: #selector(tapOnLikeButton)
-        )
-        rightBarButtonItem.tintColor = Colors.underTitleGrayColor
-        rightBarButtonItem.isEnabled = true
-        navigationItem.rightBarButtonItem = rightBarButtonItem
-        
-        checkIsLiked()
     }
     
-    func checkIsLiked() {
-        if flight?.isLiked == true {
-            navigationItem.rightBarButtonItem?.image = UIImage(systemName: "heart.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 24))
-            navigationItem.rightBarButtonItem?.tintColor = Colors.likeRedColor
-        } else {
-            navigationItem.rightBarButtonItem?.image = UIImage(systemName: "heart", withConfiguration: UIImage.SymbolConfiguration(pointSize: 24))
-            navigationItem.rightBarButtonItem?.tintColor = Colors.underTitleGrayColor
+    private func checkIsLiked() {
+        
+        guard let flight = self.flight else { return }
+        let heart = flight.isLiked ? "heart.fill" : "heart"
+        let color = flight.isLiked ? Colors.likeRedColor : Colors.underTitleGrayColor
+        
+            navigationItem.rightBarButtonItem?.image = UIImage(systemName: heart, withConfiguration: UIImage.SymbolConfiguration(pointSize: 24))
+            navigationItem.rightBarButtonItem?.tintColor = color
 
-//            rightBarButtonItem.image = UIImage(systemName: "heart.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 24))
-//            rightBarButtonItem.tintColor = Colors.likeRedColor
-//        } else {
-//            rightBarButtonItem.image = UIImage(systemName: "heart", withConfiguration: UIImage.SymbolConfiguration(pointSize: 24))
-//            rightBarButtonItem.tintColor = Colors.underTitleGrayColor
-        }
     }
     // MARK: Objc METHODS ==============================================================================
-
-    // MARK: заменить price на ID
     
     @objc private func tapOnLikeButton() {
+        
         flight?.isLiked.toggle()
         
-        guard let row = flightsArray.firstIndex(where: {$0.price == self.flight?.price}),
-        let flight = flight else { return }
-        
-        flightsArray[row] = flight
-        
+        guard let row = NetworkManager.shared.flightsArray.firstIndex(where: {$0.searchToken == flight?.searchToken}), let flight = flight else { return }
+
+        NetworkManager.shared.flightsArray[row] = flight
         checkIsLiked()
     }
     
@@ -170,18 +160,21 @@ extension FlightDetailsViewController: UITableViewDataSource {
             cell.configureOfCell(flight: flight)
             cell.selectionStyle = .none
             return cell
+            
         case 2:
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: PassengersTableViewCell.identifirer,
                 for: indexPath) as! PassengersTableViewCell
             cell.selectionStyle = .none
             return cell
+            
         case 3:
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: FlightClassTableViewCell.identifirer,
                 for: indexPath) as! FlightClassTableViewCell
             cell.selectionStyle = .none
             return cell
+            
         case 4:
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: PurshaseButtonTableViewCell.identifirer,

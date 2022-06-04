@@ -16,46 +16,38 @@ class FlightPropsTableViewCell: UITableViewCell {
     
     private lazy var departurelabel = getLabel(
         text: "Вылет",
-        size: 14,
-        color: Colors.secondTitleGrayColor,
-        weight: .bold
+        font: Fonts.secondTitleNameFont,
+        color: Colors.secondTitleGrayColor
     )
     
     private lazy var arrivallabel = getLabel(
         text: "Прибытие",
-        size: 14,
-        color: Colors.secondTitleGrayColor,
-        weight: .bold
+        font: Fonts.secondTitleNameFont,
+        color: Colors.secondTitleGrayColor
     )
     
     private lazy var departureAirportNameLabel = getLabel(
         text: "",
-        size: 24,
-        color: Colors.titleGrayColor,
-        weight: .bold
+        font: Fonts.largeFont,
+        color: Colors.titleGrayColor
     )
-    
-//    private lazy var departureAirportNameLabel = getLabelShort(Attributes.airportNameLabelAttributes, text: flight?.departureAirport ?? "")
     
     private lazy var arrivalAirportNameLabel = getLabel(
         text: "",
-        size: 24,
-        color: Colors.titleGrayColor,
-        weight: .bold
+        font: Fonts.largeFont,
+        color: Colors.titleGrayColor
     )
     
     private lazy var departureCityLabel = getLabel(
         text: "",
-        size: 15,
-        color: Colors.secondMediumGrayColor,
-        weight: .medium
+        font: Fonts.secondMediumNameFont,
+        color: Colors.secondMediumGrayColor
     )
     
     private lazy var arrivalCityLabel = getLabel(
         text: "",
-        size: 15,
-        color: Colors.secondMediumGrayColor,
-        weight: .medium
+        font: Fonts.secondMediumNameFont,
+        color: Colors.secondMediumGrayColor
     )
         
     private lazy var departureIcon = getIcon(name: "airplane.departure", size: 25)
@@ -88,10 +80,10 @@ class FlightPropsTableViewCell: UITableViewCell {
     
     func configureOfCell(flight: Flight) {
         self.flight = flight
-        self.departureAirportNameLabel.text = flight.departureAirport
-        self.arrivalAirportNameLabel.text = flight.arrivalAirport
-        self.departureCityLabel.text = flight.departureCity
-        self.arrivalCityLabel.text = flight.arrivalCity
+        self.departureAirportNameLabel.text = flight.startCityCode.uppercased()
+        self.arrivalAirportNameLabel.text = flight.endCityCode.uppercased()
+        self.departureCityLabel.text = flight.startCity
+        self.arrivalCityLabel.text = flight.endCity
     }
     
     private func setupLayout() {

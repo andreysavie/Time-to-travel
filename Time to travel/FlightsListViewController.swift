@@ -10,6 +10,8 @@ import SnapKit
 
 class FlightsListViewController: UIViewController {
     
+//    private var flightsArray = NetworkManager.shared.flightsArray
+    
     static var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = Constants.indent
@@ -98,16 +100,16 @@ extension FlightsListViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return flightsArray.count
+        return NetworkManager.shared.flightsArray.count
     }
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FlightCollectionViewCell.identifier, for: indexPath) as? FlightCollectionViewCell else { return UICollectionViewCell() }
-        cell.setConfigureOfCell(flight: flightsArray[indexPath.row])
+        cell.setConfigureOfCell(flight: NetworkManager.shared.flightsArray[indexPath.row])
         
         cell.likeButtonAction = { [weak self] in
-            flightsArray[indexPath.row].isLiked.toggle()
+            NetworkManager.shared.flightsArray[indexPath.row].isLiked.toggle()
             self?.collectionView.reloadData()
         }
         
@@ -122,7 +124,7 @@ extension FlightsListViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let flightDetailsViewController = FlightDetailsViewController(flight: flightsArray[indexPath.row])
+        let flightDetailsViewController = FlightDetailsViewController(flight: NetworkManager.shared.flightsArray[indexPath.row])
         navigationController?.pushViewController(flightDetailsViewController, animated: true)
 //        navigationController?.present(flightDetailsViewController, animated: true)
         collectionView.deselectItem(at: indexPath, animated: true)

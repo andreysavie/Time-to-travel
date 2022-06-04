@@ -22,7 +22,8 @@ public struct Fonts {
     
     static let secondTitleNameFont = UIFont.systemFont(ofSize: 14, weight: .bold)
     static let secondMediumNameFont = UIFont.systemFont(ofSize: 15, weight: .medium)
-    
+    static let secondLargeNameFont = UIFont.systemFont(ofSize: 18, weight: .bold)
+
     static let buttonFont = UIFont.systemFont(ofSize: 16, weight: .bold)
 
 }
@@ -139,10 +140,10 @@ public extension UIView {
             dateFormatter.locale = Locale(identifier: "ru_RU")
             return dateFormatter.string(from: date)
     }
-
 }
 
-public extension UITableViewCell {
+
+public extension UIView {
     
     func getIcon (name: String, size: CGFloat) -> UIImageView {
         let imageView = UIImageView()
@@ -150,17 +151,24 @@ public extension UITableViewCell {
         return imageView
     }
     
-    func getLabel (text: String, size: CGFloat, color: UIColor, weight: UIFont.Weight) -> UILabel {
+//    func getLabel (text: String, size: CGFloat, color: UIColor, weight: UIFont.Weight) -> UILabel {
+//        let label = UILabel()
+//        label.text = text
+//        label.font = UIFont.systemFont(ofSize: size, weight: weight)
+//        label.textColor = color
+//        return label
+//    }
+    
+    func getLabel (text: String, font: UIFont, color: UIColor) -> UILabel {
         let label = UILabel()
         label.text = text
-        label.font = UIFont.systemFont(ofSize: size, weight: weight)
+        label.font = font
         label.textColor = color
         return label
     }
     
     func getLabelShort (_ attributes: [NSAttributedString.Key : Any], text: String) -> UILabel {
         let label = UILabel()
-//        label.attributedText = NSAttributedString(string: text, attributes: attributes)
         label.attributedText = NSAttributedString(string: text, attributes: attributes)
         return label
     }
@@ -177,5 +185,29 @@ public extension UITableViewCell {
         button.layer.shadowOpacity = 0.0
         return button
     }
+}
+
+public extension Date {
+    func days(to secondDate: Date, calendar: Calendar = Calendar.current) -> Int {
+        return calendar.dateComponents([.day], from: self, to: secondDate).day!
+    }
+}
+
+func convertDate (longDate: String, format: String) -> String {
+    let dateFormatter = DateFormatter()
+    dateFormatter.locale = Locale(identifier: "ru_RU") // set locale to reliable US_POSIX
+    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+    let date = dateFormatter.date(from:longDate)!
+    
+    let newDateFormatter = DateFormatter()
+    newDateFormatter.dateFormat = format
+    return newDateFormatter.string(from: date)
+}
+
+func convertToDate (strDate: String) -> Date {
+    let dateFormatter = DateFormatter()
+    dateFormatter.locale = Locale(identifier: "ru_RU") // set locale to reliable US_POSIX
+    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+    return dateFormatter.date(from:strDate)!
 }
 

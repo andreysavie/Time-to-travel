@@ -16,20 +16,23 @@ class FlightCollectionViewCell: UICollectionViewCell {
     
     var likeButtonAction: (()->())?
 
-    
     // MARK: PROPERTIES ============================================================================
 
     private var flight: Flight?
     private var isLiked: Bool?
-    private var flightLikeAction: (() -> ())?
     
-    private lazy var flightNameLabel: UILabel = {
-        let label = UILabel()
-        label.font = Fonts.titleNameFont
-        label.textColor = Colors.titleGrayColor
-        label.numberOfLines = 2
-        return label
-    }()
+//    private lazy var flightNameLabel: UILabel = {
+//        let label = UILabel()
+//        label.font = Fonts.titleNameFont
+//        label.textColor = Colors.titleGrayColor
+//        label.numberOfLines = 2
+//        return label
+//    }()
+    
+    private lazy var flightNameLabel = getLabel(
+        text: "",
+        font: Fonts.titleNameFont,
+        color: Colors.titleGrayColor)
     
     private lazy var flightDurationLabel: UILabel = {
         let label = UILabel()
@@ -120,19 +123,25 @@ class FlightCollectionViewCell: UICollectionViewCell {
     
     // MARK: METHODS ===================================================================================
     
+    
     func setConfigureOfCell(flight: Flight) {
         
         self.flight = flight
         self.isLiked = flight.isLiked
         
-        flightNameLabel.text = "\(flight.departureCity.uppercased()) ⇆ \(flight.arrivalCity.uppercased())"
-        flightDurationLabel.text = "На 12 дней"
+        let startDate = convertToDate(strDate: flight.startDate)
+        let endDate = convertToDate(strDate: flight.endDate)
         
-        flightDepartureDateLabel.text = "\(getFormattedDate(date: flight.departureDate, format: "dd.MM"))"
-        flightReturnDateLabel.text = "\(getFormattedDate(date: flight.returnDate, format: "dd.MM"))"
+        let dateDiff = startDate.days(to: endDate)
         
-        departureAirportLabel.text = "\(flight.departureAirport.uppercased()) - \(flight.arrivalAirport.uppercased())"
-        arrivalAirportLabel.text = "\(flight.arrivalAirport.uppercased()) - \(flight.departureAirport.uppercased())"
+        flightNameLabel.text = "\(flight.startCity.uppercased()) ⇆ \(flight.endCity.uppercased())"
+        flightDurationLabel.text = "На \(dateDiff) дней"
+        
+        flightDepartureDateLabel.text =  "\(convertDate(longDate: flight.startDate, format: "dd.MM"))" //\(flight.startDate)"
+        flightReturnDateLabel.text = "\(convertDate(longDate: flight.endDate, format: "dd.MM"))"
+        
+        departureAirportLabel.text = "\(flight.startCityCode.uppercased()) - \(flight.endCityCode.uppercased())"
+        arrivalAirportLabel.text = "\(flight.endCityCode.uppercased()) - \(flight.startCityCode.uppercased())"
         
         priceLabel.text = "\(flight.price) ₽"
 

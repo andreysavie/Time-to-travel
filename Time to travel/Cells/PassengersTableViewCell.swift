@@ -11,25 +11,24 @@ class PassengersTableViewCell: UITableViewCell {
     
     static let identifirer = "PassengersTableViewCell"
 
+    // MARK: PROPERTIES ============================================================================
+
     private lazy var passengerslabel = getLabel(
         text: "Пассажиры",
-        size: 14,
-        color: Colors.secondTitleGrayColor,
-        weight: .bold
+        font: Fonts.secondTitleNameFont,
+        color: Colors.secondTitleGrayColor
     )
     
     private lazy var adultlabel = getLabel(
         text: "Взрослый",
-        size: 14,
-        color: Colors.secondMediumGrayColor,
-        weight: .bold
+        font: Fonts.secondMediumNameFont,
+        color: Colors.secondMediumGrayColor
     )
     
     private lazy var childlabel = getLabel(
         text: "Детский",
-        size: 14,
-        color: Colors.secondMediumGrayColor,
-        weight: .bold
+        font: Fonts.secondMediumNameFont,
+        color: Colors.secondMediumGrayColor
     )
     
     private lazy var adultIcon = getIcon(
@@ -42,6 +41,8 @@ class PassengersTableViewCell: UITableViewCell {
         size: 15
     )
     
+    // MARK: INITS ============================================================================
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.backgroundColor = .clear
@@ -57,12 +58,9 @@ class PassengersTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-//    private func configureOfCell(flight: Flight) {
-//        self.flightDate.text = getFormattedDate(date: flight.departureDate, format: "E, dd MMMM")
-//
-//    }
-    
+        
+    // MARK: METHODS ============================================================================
+
     private func setupLayout() {
         
         passengerslabel.snp.makeConstraints { make in
@@ -88,7 +86,7 @@ class PassengersTableViewCell: UITableViewCell {
             make.leading.equalTo(childIcon.snp.trailing).offset(8)
             make.centerY.equalTo(childIcon)
         }
-
     }
+    
 }
 

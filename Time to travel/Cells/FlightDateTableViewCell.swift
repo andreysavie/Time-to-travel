@@ -11,11 +11,12 @@ class FlightDateTableViewCell: UITableViewCell {
     
     static let identifirer = "FlightDateTableViewCell"
 
+    // MARK: PROPERTIES ============================================================================
+
     private lazy var datelabel = getLabel(
         text: "Дата отправления",
-        size: 14,
-        color: Colors.secondTitleGrayColor,
-        weight: .bold
+        font: Fonts.secondTitleNameFont,
+        color: Colors.secondTitleGrayColor
     )
     
     private lazy var calendarIcon = getIcon(
@@ -25,25 +26,26 @@ class FlightDateTableViewCell: UITableViewCell {
     
     private lazy var flightDate = getLabel(
         text: "",
-        size: 18,
-        color: Colors.secondMediumGrayColor,
-        weight: .bold
+        font: Fonts.secondTitleNameFont,
+        color: Colors.secondMediumGrayColor
     )
     
 
-    
-    func configureOfCell(flight: Flight) {
-        self.flightDate.text = getFormattedDate(date: flight.departureDate, format: "E, dd MMMM")
+    // MARK: INITS ============================================================================
 
-    }
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-       
         setupLayout()
     }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: METHODS ============================================================================
+
+    func configureOfCell(flight: Flight) {
+        self.flightDate.text = convertDate(longDate: flight.startDate, format: "E, dd MMMM")
     }
     
     private func setupLayout() {

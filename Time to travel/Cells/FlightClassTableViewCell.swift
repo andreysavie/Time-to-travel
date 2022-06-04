@@ -11,13 +11,14 @@ class FlightClassTableViewCell: UITableViewCell {
     
     static let identifirer = "FlightClassTableViewCell"
 
+    // MARK: PROPERTIES ============================================================================
+
     private let classes = ["Эконом", "Бизнес", "Первый"]
     
     private lazy var classlabel = getLabel(
         text: "Класс перелёта",
-        size: 14,
-        color: Colors.secondTitleGrayColor,
-        weight: .bold
+        font: Fonts.secondTitleNameFont,
+        color: Colors.secondTitleGrayColor
     )
     
     private lazy var classSemgentedControl: UISegmentedControl = {
@@ -29,7 +30,8 @@ class FlightClassTableViewCell: UITableViewCell {
         return control
     }()
 
-    
+    // MARK: INITS ============================================================================
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.backgroundColor = .clear
@@ -43,6 +45,8 @@ class FlightClassTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
         
+    // MARK: METHODS ============================================================================
+
     private func setupLayout() {
         
         classlabel.snp.makeConstraints { make in
