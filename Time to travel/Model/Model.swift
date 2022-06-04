@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 public struct Flight: Codable {
     
     var startCity: String
@@ -34,7 +35,9 @@ final class NetworkManager {
     }
     
     var flightsArray = [Flight]()
-
+    
+    var sortingType: String = "стоимости"
+    
     private func fetchData() {
         
         do {

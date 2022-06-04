@@ -10,8 +10,10 @@ import SnapKit
 
 class FlightsListViewController: UIViewController {
     
+    
     // MARK: PROPERTIES ============================================================================
 
+    
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
@@ -33,12 +35,22 @@ class FlightsListViewController: UIViewController {
             message: "",
             preferredStyle: .actionSheet )
         
-        let acceptAction = UIAlertAction(title: "DA", style: .default) { (_) -> Void in }
-        let declineAction = UIAlertAction(title: "NET", style: .destructive) { (_) -> Void in }
-    
-        alertController.addAction(acceptAction)
-        alertController.addAction(declineAction)
+        let price = UIAlertAction(title: "Стоимости", style: .default) { (_) -> Void in
+            NetworkManager.shared.flightsArray.sort(by: { $0.price < $1.price} )
+            self.collectionView.reloadData()
+            
+        }
         
+        let date = UIAlertAction(title: "Дате отправления", style: .default) { (_) -> Void in
+            NetworkManager.shared.flightsArray.sort(by: { $0.startDate < $1.startDate} )
+            self.collectionView.reloadData()
+        }
+
+        let declineAction = UIAlertAction(title: "Отмена", style: .destructive) { (_) -> Void in }
+    
+        alertController.addAction(price)
+        alertController.addAction(date)
+        alertController.addAction(declineAction)
         return alertController
     }()
     
@@ -113,7 +125,6 @@ extension FlightsListViewController: UICollectionViewDataSource {
             
         case 0:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: SortingCollectionViewCell.self), for: indexPath) as? SortingCollectionViewCell else { return UICollectionViewCell() }
-            
             return cell
             
         case 1:
