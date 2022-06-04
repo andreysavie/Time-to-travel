@@ -26,6 +26,22 @@ class FlightsListViewController: UIViewController {
         return layout
     }()
     
+    private lazy var sortingTypeAlertController: UIAlertController = {
+        
+        let alertController = UIAlertController(
+            title: "Сортировать по ...",
+            message: "",
+            preferredStyle: .actionSheet )
+        
+        let acceptAction = UIAlertAction(title: "DA", style: .default) { (_) -> Void in }
+        let declineAction = UIAlertAction(title: "NET", style: .destructive) { (_) -> Void in }
+    
+        alertController.addAction(acceptAction)
+        alertController.addAction(declineAction)
+        
+        return alertController
+    }()
+    
     private lazy var gradient = Gradients.flightsListGradient
 
     
@@ -36,8 +52,14 @@ class FlightsListViewController: UIViewController {
         
         collectionView.register(
             FlightCollectionViewCell.self,
-            forCellWithReuseIdentifier: FlightCollectionViewCell.identifier)
+            forCellWithReuseIdentifier: FlightCollectionViewCell.identifier
+        )
 
+        collectionView.register(
+            SortingCollectionViewCell.self,
+            forCellWithReuseIdentifier: SortingCollectionViewCell.identifier
+        )
+        
         collectionView.dataSource = self
         collectionView.delegate = self
         
@@ -68,15 +90,33 @@ class FlightsListViewController: UIViewController {
 extension FlightsListViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return 2
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return NetworkManager.shared.flightsArray.count
+        
+        var sectionsCount = 0
+        switch section {
+        case 0:
+            sectionsCount = 1
+        case 1:
+            sectionsCount = NetworkManager.shared.flightsArray.count
+        default:
+            break
+        }
+        return sectionsCount
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        switch indexPath.section {
+            
+        case 0:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: SortingCollectionViewCell.self), for: indexPath) as? SortingCollectionViewCell else { return UICollectionViewCell() }
+            
+            return cell
+            
+        case 1:
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FlightCollectionViewCell.identifier, for: indexPath) as? FlightCollectionViewCell else { return UICollectionViewCell() }
         cell.setConfigureOfCell(flight: NetworkManager.shared.flightsArray[indexPath.row])
         
@@ -85,6 +125,9 @@ extension FlightsListViewController: UICollectionViewDataSource {
             self?.collectionView.reloadData()
         }
         return cell
+        default:
+            return UICollectionViewCell()
+        }
     }
 }
 
@@ -92,9 +135,14 @@ extension FlightsListViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let flightDetailsViewController = FlightDetailsViewController(flight: NetworkManager.shared.flightsArray[indexPath.row])
-        navigationController?.pushViewController(flightDetailsViewController, animated: true)
-        collectionView.deselectItem(at: indexPath, animated: true)
+        switch indexPath {
+        case [0,0]:
+            navigationController?.present(sortingTypeAlertController, animated: true, completion: nil)
+        default:
+            let flightDetailsViewController = FlightDetailsViewController(flight: NetworkManager.shared.flightsArray[indexPath.row])
+            navigationController?.pushViewController(flightDetailsViewController, animated: true)
+            collectionView.deselectItem(at: indexPath, animated: true)
+        }
     }
 }
 
@@ -102,6 +150,15 @@ extension FlightsListViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: floor(collectionView.frame.width - 32), height: 130)
+        var height: CGFloat = 0
+        switch indexPath.section {
+        case 0:
+            height = Constants.heightFor0Section
+        case 1:
+            height = Constants.heightFor1Section
+        default:
+            break
+        }
+        return CGSize(width: floor(collectionView.frame.width - 32), height: height)
     }
 }

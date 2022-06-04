@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1DD3C0BA98590439C8F3EB42 /* Pods_Time_to_travel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8493C83B42C057A57F08CE8 /* Pods_Time_to_travel.framework */; };
+		D54F9D0A284B8A3100B3C0EA /* SortingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54F9D09284B8A3100B3C0EA /* SortingCollectionViewCell.swift */; };
+		D54F9D0E284B8AFD00B3C0EA /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54F9D0D284B8AFD00B3C0EA /* InfoViewController.swift */; };
 		D568C452284A110F00418D97 /* FlightPropsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D568C451284A110F00418D97 /* FlightPropsTableViewCell.swift */; };
 		D568C454284A112700418D97 /* FlightDateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D568C453284A112700418D97 /* FlightDateTableViewCell.swift */; };
 		D568C456284A113400418D97 /* PassengersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D568C455284A113400418D97 /* PassengersTableViewCell.swift */; };
@@ -28,6 +30,8 @@
 /* Begin PBXFileReference section */
 		4C0A6BEC549406DC7E35B2DA /* Pods-Time to travel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Time to travel.debug.xcconfig"; path = "Target Support Files/Pods-Time to travel/Pods-Time to travel.debug.xcconfig"; sourceTree = "<group>"; };
 		B8493C83B42C057A57F08CE8 /* Pods_Time_to_travel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Time_to_travel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D54F9D09284B8A3100B3C0EA /* SortingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingCollectionViewCell.swift; sourceTree = "<group>"; };
+		D54F9D0D284B8AFD00B3C0EA /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		D551CA0C284937870019A464 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D568C451284A110F00418D97 /* FlightPropsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightPropsTableViewCell.swift; sourceTree = "<group>"; };
 		D568C453284A112700418D97 /* FlightDateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightDateTableViewCell.swift; sourceTree = "<group>"; };
@@ -88,6 +92,8 @@
 		D568C45B284A129700418D97 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				D54F9D09284B8A3100B3C0EA /* SortingCollectionViewCell.swift */,
+				D57BA8102846B9FA00DA8F4D /* FlightCollectionViewCell.swift */,
 				D568C451284A110F00418D97 /* FlightPropsTableViewCell.swift */,
 				D568C453284A112700418D97 /* FlightDateTableViewCell.swift */,
 				D568C455284A113400418D97 /* PassengersTableViewCell.swift */,
@@ -130,8 +136,8 @@
 				D57BA80E2846AEB300DA8F4D /* Constants.swift */,
 				D568C461284A8BE100418D97 /* Model.swift */,
 				D57BA7FA28469BFB00DA8F4D /* FlightsListViewController.swift */,
-				D57BA8102846B9FA00DA8F4D /* FlightCollectionViewCell.swift */,
 				D57BA80A28469D3200DA8F4D /* FlightDetailsViewController.swift */,
+				D54F9D0D284B8AFD00B3C0EA /* InfoViewController.swift */,
 				D568C45B284A129700418D97 /* Cells */,
 				D568C45E284A151C00418D97 /* View */,
 				D551CA0C284937870019A464 /* README.md */,
@@ -264,10 +270,12 @@
 				D57BA8112846B9FA00DA8F4D /* FlightCollectionViewCell.swift in Sources */,
 				D568C462284A8BE100418D97 /* Model.swift in Sources */,
 				D568C452284A110F00418D97 /* FlightPropsTableViewCell.swift in Sources */,
+				D54F9D0A284B8A3100B3C0EA /* SortingCollectionViewCell.swift in Sources */,
 				D568C45A284A128D00418D97 /* PurshaseButtonTableViewCell.swift in Sources */,
 				D57BA7FB28469BFB00DA8F4D /* FlightsListViewController.swift in Sources */,
 				D57BA7F728469BFB00DA8F4D /* AppDelegate.swift in Sources */,
 				D568C458284A114A00418D97 /* FlightClassTableViewCell.swift in Sources */,
+				D54F9D0E284B8AFD00B3C0EA /* InfoViewController.swift in Sources */,
 				D57BA80B28469D3200DA8F4D /* FlightDetailsViewController.swift in Sources */,
 				D57BA80F2846AEB300DA8F4D /* Constants.swift in Sources */,
 				D568C454284A112700418D97 /* FlightDateTableViewCell.swift in Sources */,

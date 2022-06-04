@@ -20,10 +20,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let tabBarController = UITabBarController()
         
         let flightsListNavigationController = UINavigationController(rootViewController: FlightsListViewController())
+        
+        let infoViewController = InfoViewController()
+        infoViewController.view.backgroundColor = .white
+        let infoNavigationController = UINavigationController(rootViewController: infoViewController)
 
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = .white
+
+        let appearanceNavBar = UINavigationBarAppearance()
+        appearanceNavBar.configureWithOpaqueBackground()
+        appearanceNavBar.backgroundColor = .white
+        
+        let appearanceTabBar = tabBarController.tabBar.standardAppearance
+        appearanceTabBar.stackedLayoutAppearance.selected.iconColor = Colors.purpleColor
+        tabBarController.tabBar.standardAppearance = appearanceTabBar
+
 
         flightsListNavigationController.tabBarItem = UITabBarItem(title: "Поиск", image: UIImage(systemName: "airplane"), selectedImage: UIImage(systemName: "airplane"))
         flightsListNavigationController.tabBarItem.setTitleTextAttributes(Attributes.nabBarItemAttributes, for: .normal)
@@ -31,10 +41,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         flightsListNavigationController.navigationBar.titleTextAttributes = Attributes.navBarTitleTextAttributes
         flightsListNavigationController.navigationBar.topItem?.title = "Выберите авиаперелёт"
         flightsListNavigationController.navigationBar.barTintColor = UIColor.systemGray5
-        flightsListNavigationController.navigationBar.standardAppearance = appearance
+        flightsListNavigationController.navigationBar.standardAppearance = appearanceNavBar
         flightsListNavigationController.navigationBar.scrollEdgeAppearance = flightsListNavigationController.navigationBar.standardAppearance
         
-        tabBarController.viewControllers = [flightsListNavigationController, flightsListNavigationController]
+        infoNavigationController.tabBarItem = UITabBarItem(
+            title: "Информация",
+            image: UIImage(systemName: "info.circle"),
+            selectedImage: UIImage(systemName:"info.circle.fill"))
+        infoNavigationController.navigationBar.topItem?.title = "Информация"
+        infoNavigationController.navigationBar.barTintColor = UIColor.systemGray5
+        infoNavigationController.navigationBar.standardAppearance = appearanceNavBar
+        infoNavigationController.navigationBar.scrollEdgeAppearance = infoNavigationController.navigationBar.standardAppearance
+
+        tabBarController.viewControllers = [flightsListNavigationController, infoNavigationController]
         tabBarController.tabBar.backgroundColor = .white
         tabBarController.tabBar.layer.borderWidth = 1
         tabBarController.tabBar.layer.borderColor = UIColor.gray.cgColor
