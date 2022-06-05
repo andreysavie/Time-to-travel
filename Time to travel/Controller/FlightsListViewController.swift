@@ -162,6 +162,7 @@ extension FlightsListViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
     }
+    
 }
 
 extension FlightsListViewController: UICollectionViewDelegate {

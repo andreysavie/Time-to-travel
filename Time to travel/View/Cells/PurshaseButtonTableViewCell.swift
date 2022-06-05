@@ -6,12 +6,25 @@
 //
 
 import UIKit
+import SnapKit
 
 class PurshaseButtonTableViewCell: UITableViewCell {
     
     static let identifirer = "PurshaseButtonTableViewCell"
     
     // MARK: PROPERTIES ============================================================================
+
+    private lazy var priceTitleLabel = getLabel(
+        text: "Стоимость",
+        font: Fonts.secondTitleNameFont,
+        color: Colors.secondTitleGrayColor
+    )
+    
+    private lazy var priceLabel = getLabel(
+        text: "",
+        font: Fonts.largeFont,
+        color: Colors.purpleColor
+    )
 
     private lazy var purchaseButton: GradientButton = {
         let button = GradientButton()
@@ -38,14 +51,27 @@ class PurshaseButtonTableViewCell: UITableViewCell {
     
     // MARK: METHODS ============================================================================
 
+    func configureOfCell(flight: Flight) {
+        self.priceLabel.text = "\(flight.price) ₽"
+    }
+    
     private func setupLayout() {
         
         contentView.backgroundColor = .clear
-        contentView.addSubview(purchaseButton)
+        contentView.addSubviews(priceTitleLabel, priceLabel, purchaseButton)
+
+        priceTitleLabel.snp.makeConstraints { make in
+            make.leading.top.equalToSuperview().inset(16)
+        }
+        
+        priceLabel.snp.makeConstraints { make in
+            make.leading.equalToSuperview().inset(16)
+            make.top.equalTo(priceTitleLabel.snp.bottom).offset(12)
+        }
 
         purchaseButton.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalToSuperview().inset(50)
+            make.top.equalTo(priceLabel.snp.bottom).offset(32)
             make.leading.trailing.equalToSuperview().inset(56)
             make.height.equalTo(50)
         }

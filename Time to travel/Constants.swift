@@ -58,32 +58,21 @@ public struct GradientColors {
     static let buttonSecondColor = UIColor(red: 164/255, green: 53/255, blue: 252/255, alpha: 1)
 }
 
-//MARK: GRADIENTS ======================================================================================
-
-public struct Gradients {
-    
-    
-//    static func getGradient(start: CGPoint, end: CGPoint) -> CAGradientLayer {
-//        let gradient = CAGradientLayer()
-//        gradient.type = .axial
-//        gradient.colors = [
-//            GradientColors.foneFirstColor.cgColor,
-//            GradientColors.foneSecondColor.cgColor,
-//            GradientColors.foneThirdColor.cgColor
-//        ]
-//        gradient.startPoint = start
-//        gradient.endPoint = end
-//
-//        gradient.locations = [0, 0.55, 1]
-//        return gradient
-//    }
-}
-
 
 public struct Labels {
         
-    static let infoDescription = "fffffff fffffffffffffffffffffff ffffffffff fffffffffff fffffffffff fffffffffff fffffffffff ffffffffff ffffffffff fffffffffffff fffffffffff ffffffffffffffffff fffffffff ffffffffffffffff ffffffffff ffffffffffffff fffffffff fffffff ffffffffffff ffffff fffffffff fffffff fffff ffffffffffffff ffffffff ffffff fffffffffff fffffff ffffffffff ffffff ffffffffffff ffffff fffffff fffffffffff ffffffff ffffff fffff fffffffffffffff fffffffffffffffffffffff ffffff fffffff ffffffffffffffff fffffffff fffffffffffff ffffffff ffffffffff ffffffffffff ffffffff f ffffffffff ffffff fffff"
+    static let infoDescription = "Несмотря на довольно небольшые требования в задании, я постарался максимально влить свою душу и интергировать в проект большую часть своих знаний и умений. Конечно же, за предоставленный срок не всё удалось \"Впихнуть\" в проект, однако здесь ровно столько технологий, сколько должно быть для того, чтобы мне не было стыдно за проект, который будет меня представлять :) \n\nЗдесь я хочу кратко иозложить информацию о технологиях и фичах, применённых мной в процессе написания кода: \n\n - Архитектура MVC (только infoViewController) \n - Singletone (Network manager) \n - Callback (кнопка \"Like\" \n - Facade (создание лейблов и иконок) \n - ООП \n - обработка ошибок (Network manager) \n - парсинг JSON из сети \n - Управление потоками \n\nТак же я постарался максимально эстетично разбить код на части для большего комфорта во время чтения, использовал градиенты и наимацию для улучшения UX. \n\nКонечно же, масштабировать данное приложение и дополнять различными технологиями можно бесконечно, но лично я считаю, что написанного мной достаточно для того, чтобы я мог показать свой подход к данному делу, реализация олицетворяет то, с каким удовольствием я исполнял этот проект. \n\nБуду рад обратной связи, и надеюсь, что Вы рассмотрите меня как кандидата в свою команду! С удовольствием стану её частью! \n\nВаш @andreysavie 😊" 
 }
+
+    /*
+     - MVC ok
+     - Singletone ok
+     - callback ok
+     - Facade ok
+     - ООП, Solid ok
+     - обработка ошибок ok
+     - многопоточность и асинхронка ok
+     */
 
 
 public struct Constants {

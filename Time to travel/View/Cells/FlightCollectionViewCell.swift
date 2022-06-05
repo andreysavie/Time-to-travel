@@ -66,7 +66,7 @@ class FlightCollectionViewCell: UICollectionViewCell {
     
     private lazy var arriveIcon = getIcon(name: "airplane.arrival", size: 18)
     
-    private lazy var likeButton: UIButton = {
+    public lazy var likeButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = Colors.backGrayColor
         button.layer.cornerRadius = 8
@@ -187,5 +187,58 @@ class FlightCollectionViewCell: UICollectionViewCell {
 
     @objc private func tapOnLikeButton() {
         likeButtonAction?()
+//        
+//        UIView.animate(withDuration: 0.3,
+//            animations: {
+//                self.likeButton.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
+//            },
+//            completion: { _ in
+//                UIView.animate(withDuration: 0.3) {
+//                    self.likeButton.transform = CGAffineTransform.identity
+//                }
+//            })
+        
+    }
+    
+    @objc func animeteTapLikeButton () {
+        UIView.animate(withDuration: 0.3,
+            animations: {
+                self.likeButton.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
+            },
+            completion: { _ in
+                UIView.animate(withDuration: 0.3) {
+                    self.likeButton.transform = CGAffineTransform.identity
+                }
+            })
     }
 }
+
+// MARK: EXTENSIONS ==============================================================================
+
+extension FlightCollectionViewCell {
+//
+//        func likeAnimation() {
+//
+//            UIView.animate(withDuration: 0.3,
+//                animations: {
+//                    self.likeButton.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
+//                },
+//                completion: { _ in
+//                    UIView.animate(withDuration: 0.3) {
+//                        self.likeButton.transform = CGAffineTransform.identity
+//                    }
+//                })
+//
+//            UIView.animate(withDuration: 0.1, delay: 0.0, options: .curveEaseOut, animations: {
+//                self.layer.zPosition = self.isSelected ? 1 : -1
+//                self.transform = self.isSelected ? CGAffineTransform(scaleX: 1.05, y: 1.05) : CGAffineTransform.identity
+//            }, completion: {_ in
+//
+//                UIView.animate(withDuration: 0.1, delay: 0.0, options: .curveEaseOut, animations: {
+//                    self.layer.zPosition = self.isSelected ? 1 : -1
+//                    self.transform = self.isSelected ? CGAffineTransform(scaleX: 1.0, y: 1.0) : CGAffineTransform.identity
+//                })
+//            })
+        }
+    
+

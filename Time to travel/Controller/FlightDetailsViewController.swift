@@ -55,8 +55,8 @@ class FlightDetailsViewController: UIViewController {
         setupLayout()
         
         tableView.register(FlightPropsTableViewCell.self, forCellReuseIdentifier: FlightPropsTableViewCell.identifirer)
-        tableView.register(FlightDateTableViewCell.self, forCellReuseIdentifier: FlightDateTableViewCell.identifirer)
-        tableView.register(PassengersTableViewCell.self, forCellReuseIdentifier: PassengersTableViewCell.identifirer)
+        tableView.register(FlightDepartureDateTableViewCell.self, forCellReuseIdentifier: FlightDepartureDateTableViewCell.identifirer)
+        tableView.register(FlightReturnDateTableViewCell.self, forCellReuseIdentifier: FlightReturnDateTableViewCell.identifirer)
         tableView.register(FlightClassTableViewCell.self, forCellReuseIdentifier: FlightClassTableViewCell.identifirer)
         tableView.register(PurshaseButtonTableViewCell.self, forCellReuseIdentifier: PurshaseButtonTableViewCell.identifirer)
         
@@ -149,8 +149,8 @@ extension FlightDetailsViewController: UITableViewDataSource {
 
         case 1:
             let cell = tableView.dequeueReusableCell(
-                withIdentifier: FlightDateTableViewCell.identifirer,
-                for: indexPath) as! FlightDateTableViewCell
+                withIdentifier: FlightDepartureDateTableViewCell.identifirer,
+                for: indexPath) as! FlightDepartureDateTableViewCell
             guard let flight = flight else { return UITableViewCell() }
             cell.configureOfCell(flight: flight)
             cell.selectionStyle = .none
@@ -158,8 +158,10 @@ extension FlightDetailsViewController: UITableViewDataSource {
             
         case 2:
             let cell = tableView.dequeueReusableCell(
-                withIdentifier: PassengersTableViewCell.identifirer,
-                for: indexPath) as! PassengersTableViewCell
+                withIdentifier: FlightReturnDateTableViewCell.identifirer,
+                for: indexPath) as! FlightReturnDateTableViewCell
+            guard let flight = flight else { return UITableViewCell() }
+            cell.configureOfCell(flight: flight)
             cell.selectionStyle = .none
             return cell
             
@@ -174,6 +176,8 @@ extension FlightDetailsViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: PurshaseButtonTableViewCell.identifirer,
                 for: indexPath) as! PurshaseButtonTableViewCell
+            guard let flight = flight else { return UITableViewCell() }
+            cell.configureOfCell(flight: flight)
             cell.selectionStyle = .none
             return cell
             
@@ -197,11 +201,11 @@ extension FlightDetailsViewController: UITableViewDelegate {
         case 1:
             return 85
         case 2:
-            return 115
+            return 85
         case 3:
             return 100
         case 4:
-            return 300
+            return 350
         default:
             return 0
         }

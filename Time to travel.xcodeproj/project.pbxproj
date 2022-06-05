@@ -12,8 +12,8 @@
 		D54F9D0E284B8AFD00B3C0EA /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54F9D0D284B8AFD00B3C0EA /* InfoViewController.swift */; };
 		D54F9D10284BF58A00B3C0EA /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54F9D0F284BF58A00B3C0EA /* InfoView.swift */; };
 		D568C452284A110F00418D97 /* FlightPropsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D568C451284A110F00418D97 /* FlightPropsTableViewCell.swift */; };
-		D568C454284A112700418D97 /* FlightDateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D568C453284A112700418D97 /* FlightDateTableViewCell.swift */; };
-		D568C456284A113400418D97 /* PassengersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D568C455284A113400418D97 /* PassengersTableViewCell.swift */; };
+		D568C454284A112700418D97 /* FlightDepartureDateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D568C453284A112700418D97 /* FlightDepartureDateTableViewCell.swift */; };
+		D568C456284A113400418D97 /* FlightReturnDateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D568C455284A113400418D97 /* FlightReturnDateTableViewCell.swift */; };
 		D568C458284A114A00418D97 /* FlightClassTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D568C457284A114A00418D97 /* FlightClassTableViewCell.swift */; };
 		D568C45A284A128D00418D97 /* PurshaseButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D568C459284A128D00418D97 /* PurshaseButtonTableViewCell.swift */; };
 		D568C45D284A150400418D97 /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D568C45C284A150400418D97 /* GradientButton.swift */; };
@@ -36,8 +36,8 @@
 		D54F9D0F284BF58A00B3C0EA /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		D551CA0C284937870019A464 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D568C451284A110F00418D97 /* FlightPropsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightPropsTableViewCell.swift; sourceTree = "<group>"; };
-		D568C453284A112700418D97 /* FlightDateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightDateTableViewCell.swift; sourceTree = "<group>"; };
-		D568C455284A113400418D97 /* PassengersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassengersTableViewCell.swift; sourceTree = "<group>"; };
+		D568C453284A112700418D97 /* FlightDepartureDateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightDepartureDateTableViewCell.swift; sourceTree = "<group>"; };
+		D568C455284A113400418D97 /* FlightReturnDateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightReturnDateTableViewCell.swift; sourceTree = "<group>"; };
 		D568C457284A114A00418D97 /* FlightClassTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightClassTableViewCell.swift; sourceTree = "<group>"; };
 		D568C459284A128D00418D97 /* PurshaseButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurshaseButtonTableViewCell.swift; sourceTree = "<group>"; };
 		D568C45C284A150400418D97 /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
@@ -108,8 +108,8 @@
 				D54F9D09284B8A3100B3C0EA /* SortingCollectionViewCell.swift */,
 				D57BA8102846B9FA00DA8F4D /* FlightCollectionViewCell.swift */,
 				D568C451284A110F00418D97 /* FlightPropsTableViewCell.swift */,
-				D568C453284A112700418D97 /* FlightDateTableViewCell.swift */,
-				D568C455284A113400418D97 /* PassengersTableViewCell.swift */,
+				D568C453284A112700418D97 /* FlightDepartureDateTableViewCell.swift */,
+				D568C455284A113400418D97 /* FlightReturnDateTableViewCell.swift */,
 				D568C457284A114A00418D97 /* FlightClassTableViewCell.swift */,
 				D568C459284A128D00418D97 /* PurshaseButtonTableViewCell.swift */,
 			);
@@ -276,7 +276,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D568C456284A113400418D97 /* PassengersTableViewCell.swift in Sources */,
+				D568C456284A113400418D97 /* FlightReturnDateTableViewCell.swift in Sources */,
 				D568C45D284A150400418D97 /* GradientButton.swift in Sources */,
 				D57BA8112846B9FA00DA8F4D /* FlightCollectionViewCell.swift in Sources */,
 				D568C462284A8BE100418D97 /* Model.swift in Sources */,
@@ -290,7 +290,7 @@
 				D57BA80B28469D3200DA8F4D /* FlightDetailsViewController.swift in Sources */,
 				D57BA80F2846AEB300DA8F4D /* Constants.swift in Sources */,
 				D54F9D10284BF58A00B3C0EA /* InfoView.swift in Sources */,
-				D568C454284A112700418D97 /* FlightDateTableViewCell.swift in Sources */,
+				D568C454284A112700418D97 /* FlightDepartureDateTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,5 +1,5 @@
 //
-//  FlightDateTableViewCell.swift
+//  PassengersTableViewCell.swift
 //  Time to travel
 //
 //  Created by Андрей Рыбалкин on 03.06.2022.
@@ -7,14 +7,14 @@
 
 import UIKit
 
-class FlightDateTableViewCell: UITableViewCell {
+class FlightReturnDateTableViewCell: UITableViewCell {
     
-    static let identifirer = "FlightDateTableViewCell"
+    static let identifirer = "FlightReturnDateTableViewCell"
 
     // MARK: PROPERTIES ============================================================================
 
     private lazy var datelabel = getLabel(
-        text: "Дата отправления",
+        text: "Дата возвращения",
         font: Fonts.secondTitleNameFont,
         color: Colors.secondTitleGrayColor
     )
@@ -45,7 +45,7 @@ class FlightDateTableViewCell: UITableViewCell {
     // MARK: METHODS ============================================================================
 
     func configureOfCell(flight: Flight) {
-        self.flightDate.text = convertDate(longDate: flight.startDate, format: "E, dd MMMM")
+        self.flightDate.text = convertDate(longDate: flight.endDate, format: "E, dd MMMM")
     }
     
     private func setupLayout() {
@@ -72,4 +72,3 @@ class FlightDateTableViewCell: UITableViewCell {
     }
     
 }
-
