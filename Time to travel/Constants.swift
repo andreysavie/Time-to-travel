@@ -19,7 +19,8 @@ public struct Fonts {
     static let numbersFont = UIFont.systemFont(ofSize: 16, weight: .semibold)
     static let mediumFont = UIFont.systemFont(ofSize: 15, weight: .medium)
     static let largeFont = UIFont.systemFont(ofSize: 24, weight: .bold)
-    
+    static let mediumSortLabelFont = UIFont.systemFont(ofSize: 18, weight: .medium)
+
     static let secondTitleNameFont = UIFont.systemFont(ofSize: 14, weight: .bold)
     static let secondMediumNameFont = UIFont.systemFont(ofSize: 15, weight: .medium)
     static let secondLargeNameFont = UIFont.systemFont(ofSize: 18, weight: .bold)
@@ -68,6 +69,20 @@ public struct Gradients {
         ]
         gradient.startPoint = CGPoint(x: 1, y: 0)
         gradient.endPoint = CGPoint(x: 0, y: 1)
+        gradient.locations = [0, 0.55, 1]
+        return gradient
+    }()
+    
+    static var flightDetailsGradient: CAGradientLayer = {
+        let gradient = CAGradientLayer()
+        gradient.type = .axial
+        gradient.colors = [
+            GradientColors.foneFirstColor.cgColor,
+            GradientColors.foneSecondColor.cgColor,
+            GradientColors.foneThirdColor.cgColor
+        ]
+        gradient.startPoint = CGPoint(x: 0, y: 0)
+        gradient.endPoint = CGPoint(x: 1, y: 1)
         gradient.locations = [0, 0.55, 1]
         return gradient
     }()
@@ -165,13 +180,6 @@ public extension UIView {
         return imageView
     }
     
-//    func getLabel (text: String, size: CGFloat, color: UIColor, weight: UIFont.Weight) -> UILabel {
-//        let label = UILabel()
-//        label.text = text
-//        label.font = UIFont.systemFont(ofSize: size, weight: weight)
-//        label.textColor = color
-//        return label
-//    }
     
     func getLabel (text: String, font: UIFont, color: UIColor) -> UILabel {
         let label = UILabel()
@@ -199,6 +207,7 @@ public extension UIView {
         button.layer.shadowOpacity = 0.0
         return button
     }
+    
 }
 
 public extension Date {

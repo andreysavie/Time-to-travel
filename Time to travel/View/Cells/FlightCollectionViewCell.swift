@@ -78,25 +78,9 @@ class FlightCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        contentView.backgroundColor = .white
-        contentView.layer.cornerRadius = 8
-        contentView.addSubviews(
-            
-            flightNameLabel,
-            flightDurationLabel,
-            flightDepartureDateLabel,
-            flightReturnDateLabel,
-            departureAirportLabel,
-            arrivalAirportLabel,
-            priceLabel,
-            likeButton,
-            departureIcon,
-            arriveIcon
-        )
-        
         setupLayout()
-
     }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -125,6 +109,21 @@ class FlightCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupLayout() {
+        
+        contentView.backgroundColor = .white
+        contentView.layer.cornerRadius = 8
+        contentView.addSubviews(
+            flightNameLabel,
+            flightDurationLabel,
+            flightDepartureDateLabel,
+            flightReturnDateLabel,
+            departureAirportLabel,
+            arrivalAirportLabel,
+            priceLabel,
+            likeButton,
+            departureIcon,
+            arriveIcon
+        )
         
         flightNameLabel.snp.makeConstraints { make in
             make.leading.top.equalToSuperview().inset(8)

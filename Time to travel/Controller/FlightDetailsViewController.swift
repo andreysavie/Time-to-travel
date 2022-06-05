@@ -28,24 +28,9 @@ class FlightDetailsViewController: UIViewController {
         image.tintColor = .black
         return image
     }()
-    
-    // MARK: Повтор!
-    
-    
-    private lazy var gradient: CAGradientLayer = {
-        let gradient = CAGradientLayer()
-        gradient.type = .axial
-        gradient.colors = [
-            GradientColors.foneFirstColor.cgColor,
-            GradientColors.foneSecondColor.cgColor,
-            GradientColors.foneThirdColor.cgColor
-        ]
-        gradient.startPoint = CGPoint(x: 0, y: 0)
-        gradient.endPoint = CGPoint(x: 1, y: 1)
-        gradient.locations = [0, 0.55, 1]
-        return gradient
-    }()
-    
+
+    private lazy var gradient = Gradients.flightDetailsGradient
+
     // MARK: INITS ==============================================================================
 
     init (flight: Flight?) {
@@ -89,6 +74,16 @@ class FlightDetailsViewController: UIViewController {
         rightBarButtonItem.tintColor = Colors.underTitleGrayColor
         navigationItem.rightBarButtonItem = rightBarButtonItem
         checkIsLiked()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        hideTabBar()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        showTabBar()
     }
     
     // MARK: METHODS ==============================================================================
@@ -212,6 +207,25 @@ extension FlightDetailsViewController: UITableViewDelegate {
         }
     }
     
+}
+
+extension FlightDetailsViewController {
+    
+    func hideTabBar() {
+        var frame = self.tabBarController?.tabBar.frame
+        frame!.origin.y = self.view.frame.size.height + (frame?.size.height)!
+        UIView.animate(withDuration: 0.2, animations: {
+            self.tabBarController?.tabBar.frame = frame!
+        })
+    }
+
+    func showTabBar() {
+        var frame = self.tabBarController?.tabBar.frame
+        frame!.origin.y = self.view.frame.size.height - (frame?.size.height)!
+        UIView.animate(withDuration: 0.2, animations: {
+            self.tabBarController?.tabBar.frame = frame!
+        })
+    }
 }
 
 

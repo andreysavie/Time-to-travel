@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         
         let tabBarController = UITabBarController()
+        tabBarController.tabBar.tintColor = Colors.purpleColor
         
         let flightsListNavigationController = UINavigationController(rootViewController: FlightsListViewController())
         
@@ -55,8 +56,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         tabBarController.viewControllers = [flightsListNavigationController, infoNavigationController]
         tabBarController.tabBar.backgroundColor = .white
-        tabBarController.tabBar.layer.borderWidth = 1
-        tabBarController.tabBar.layer.borderColor = UIColor.gray.cgColor
         
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()

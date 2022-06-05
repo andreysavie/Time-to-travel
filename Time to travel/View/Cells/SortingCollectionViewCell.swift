@@ -14,33 +14,25 @@ class SortingCollectionViewCell: UICollectionViewCell {
     
     // MARK: PROPERTIES ================================================================================
     
-
+    private lazy var sortingTypeLabel = getLabel(
+        text: "Сортировка",
+        font: Fonts.mediumSortLabelFont,
+        color: Colors.mediumGrayColor
+    )
     
-    private lazy var sortingTypeLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Сортировка"
-        label.textColor = Colors.titleGrayColor
-        label.font = UIFont.systemFont(ofSize: 24)
-        return label
+    private lazy var sortImage: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(systemName: "arrow.up.arrow.down", withConfiguration: UIImage.SymbolConfiguration(pointSize: 32))
+        image.tintColor = .white
+        image.backgroundColor = Colors.purpleColor
+        return image
     }()
     
-    private lazy var sortButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(systemName: "arrow.up.arrow.down", withConfiguration: UIImage.SymbolConfiguration(pointSize: 32)), for: .normal)
-        button.tintColor = .white
-        button.isUserInteractionEnabled = false
-        button.backgroundColor = Colors.purpleColor
-        return button
-    }()
-        
     
     // MARK: INITIALIZATORS ============================================================================
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        contentView.backgroundColor = .white
-        contentView.layer.cornerRadius = 8
-        contentView.clipsToBounds = true
         setupLayout()
     }
     
@@ -53,22 +45,47 @@ class SortingCollectionViewCell: UICollectionViewCell {
     
     private func setupLayout() {
         
-        contentView.addSubviews(sortingTypeLabel, sortButton)
-        
+        contentView.backgroundColor = .white
+        contentView.layer.cornerRadius = 8
+        contentView.clipsToBounds = true
+        contentView.addSubviews(sortingTypeLabel, sortImage)
         
         sortingTypeLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(12)
             make.centerY.equalToSuperview()
-            make.trailing.equalTo(sortButton.snp.leading).offset(12)
+            make.trailing.equalTo(sortImage.snp.leading).offset(12)
         }
         
-        sortButton.snp.makeConstraints { make in
+        sortImage.snp.makeConstraints { make in
             make.top.trailing.bottom.equalToSuperview()
             make.width.height.equalTo(80)
         }
     }
-    
 }
+
+// MARK: SELECTION ANIMATION ============================================================================
+
+extension SortingCollectionViewCell {
+    
+    override var isSelected: Bool {
+        didSet {
+            
+            UIView.animate(withDuration: 0.1, delay: 0.0, options: .curveEaseOut, animations: {
+                self.layer.zPosition = self.isSelected ? 1 : -1
+                self.transform = self.isSelected ? CGAffineTransform(scaleX: 1.05, y: 1.05) : CGAffineTransform.identity
+            }, completion: {_ in
+                
+                UIView.animate(withDuration: 0.1, delay: 0.0, options: .curveEaseOut, animations: {
+                    self.layer.zPosition = self.isSelected ? 1 : -1
+                    self.transform = self.isSelected ? CGAffineTransform(scaleX: 1.0, y: 1.0) : CGAffineTransform.identity
+                })
+            })
+        }
+    }
+}
+
+
+
 
 
 

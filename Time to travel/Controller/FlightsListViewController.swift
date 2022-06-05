@@ -13,7 +13,8 @@ class FlightsListViewController: UIViewController {
     
     // MARK: PROPERTIES ============================================================================
 
-    
+    let activityIndicator = UIActivityIndicatorView(style: .large)
+        
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
@@ -82,7 +83,9 @@ class FlightsListViewController: UIViewController {
         collectionView.reloadData()
     }
     
+    
     // MARK: METHODS ============================================================================
+
 
     private func setupLayout() {
         gradient.frame = view.bounds
@@ -147,10 +150,11 @@ extension FlightsListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         switch indexPath {
-        case [0,0]:
+        case [0,0]: ()
             navigationController?.present(sortingTypeAlertController, animated: true, completion: nil)
         default:
             let flightDetailsViewController = FlightDetailsViewController(flight: NetworkManager.shared.flightsArray[indexPath.row])
+
             navigationController?.pushViewController(flightDetailsViewController, animated: true)
             collectionView.deselectItem(at: indexPath, animated: true)
         }

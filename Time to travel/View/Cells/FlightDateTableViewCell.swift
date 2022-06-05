@@ -49,7 +49,6 @@ class FlightDateTableViewCell: UITableViewCell {
     }
     
     private func setupLayout() {
-                
         contentView.backgroundColor = .clear
         contentView.addSubviews(
             datelabel,
