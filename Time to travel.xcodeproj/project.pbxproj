@@ -18,6 +18,8 @@
 		D568C45D284A150400418D97 /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D568C45C284A150400418D97 /* GradientButton.swift */; };
 		D568C462284A8BE100418D97 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D568C461284A8BE100418D97 /* Model.swift */; };
 		D571285B284D2B5900A262D2 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D571285A284D2B5900A262D2 /* InfoView.swift */; };
+		D571285F284D3D7400A262D2 /* figma_screenshot.png in Resources */ = {isa = PBXBuildFile; fileRef = D571285E284D3D7400A262D2 /* figma_screenshot.png */; };
+		D5712861284D3DFB00A262D2 /* maincover.png in Resources */ = {isa = PBXBuildFile; fileRef = D5712860284D3DFB00A262D2 /* maincover.png */; };
 		D57BA7F728469BFB00DA8F4D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57BA7F628469BFB00DA8F4D /* AppDelegate.swift */; };
 		D57BA7FB28469BFB00DA8F4D /* FlightsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57BA7FA28469BFB00DA8F4D /* FlightsListViewController.swift */; };
 		D57BA7FE28469BFB00DA8F4D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D57BA7FC28469BFB00DA8F4D /* Main.storyboard */; };
@@ -42,6 +44,8 @@
 		D568C45C284A150400418D97 /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
 		D568C461284A8BE100418D97 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		D571285A284D2B5900A262D2 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		D571285E284D3D7400A262D2 /* figma_screenshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = figma_screenshot.png; sourceTree = "<group>"; };
+		D5712860284D3DFB00A262D2 /* maincover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = maincover.png; sourceTree = "<group>"; };
 		D57BA7F328469BFA00DA8F4D /* Time to travel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Time to travel.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D57BA7F628469BFB00DA8F4D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D57BA7FA28469BFB00DA8F4D /* FlightsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightsListViewController.swift; sourceTree = "<group>"; };
@@ -134,6 +138,8 @@
 				B882A648EB93AB4BDD13050E /* Pods */,
 				37115CDFD1E04A232CB51F4B /* Frameworks */,
 				D551CA0C284937870019A464 /* README.md */,
+				D571285E284D3D7400A262D2 /* figma_screenshot.png */,
+				D5712860284D3DFB00A262D2 /* maincover.png */,
 			);
 			sourceTree = "<group>";
 		};
@@ -221,7 +227,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5712861284D3DFB00A262D2 /* maincover.png in Resources */,
 				D57BA80328469BFD00DA8F4D /* LaunchScreen.storyboard in Resources */,
+				D571285F284D3D7400A262D2 /* figma_screenshot.png in Resources */,
 				D57BA80028469BFD00DA8F4D /* Assets.xcassets in Resources */,
 				D57BA7FE28469BFB00DA8F4D /* Main.storyboard in Resources */,
 			);
