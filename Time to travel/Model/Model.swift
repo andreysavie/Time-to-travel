@@ -30,15 +30,17 @@ final class NetworkManager {
     
     static let shared = NetworkManager()
     
-    private init() {
-        fetchData()
+    func sortFlightsArrayByPrice () {
+        flightsArray.sort(by: { $0.price < $1.price } )
+    }
+    
+    func sortFlightsArrayByData () {
+        flightsArray.sort(by: { $0.startDate < $1.startDate } )
     }
     
     var flightsArray = [Flight]()
     
-    var sortingType: String = "стоимости"
-    
-    private func fetchData() {
+    func fetchData() {
         
         do {
             if let file = URL(string: "https://travel.wildberries.ru/statistics/v1/cheap") {
@@ -69,14 +71,9 @@ final class NetworkManager {
                                     endDate: endDate,
                                     price: price,
                                     searchToken: searchToken
-                                )
-                                )
-                                
-                                print(flightsArray)
+                                ))
                             }
-                            
                         }
-                        
                     }
                 } else {
                     print("JSON is invalid")

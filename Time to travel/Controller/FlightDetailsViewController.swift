@@ -25,11 +25,11 @@ class FlightDetailsViewController: UIViewController {
     private lazy var backgroundImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "map")
-        image.tintColor = .black
+        image.tintColor = Colors.purpleColor
         return image
     }()
 
-    private lazy var gradient = Gradients.flightDetailsGradient
+    private lazy var gradient = getGradient(start: CGPoint(x: 0, y: 0), end: CGPoint(x: 1, y: 1))
 
     // MARK: INITS ==============================================================================
 
@@ -44,7 +44,7 @@ class FlightDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         gradient.frame = view.bounds
         view.layer.addSublayer(gradient)
 

@@ -20,12 +20,16 @@ class SortingCollectionViewCell: UICollectionViewCell {
         color: Colors.mediumGrayColor
     )
     
-    private lazy var sortImage: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(systemName: "arrow.up.arrow.down", withConfiguration: UIImage.SymbolConfiguration(pointSize: 32))
-        image.tintColor = .white
-        image.backgroundColor = Colors.purpleColor
-        return image
+    private lazy var sortButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(
+            systemName: "arrow.up.arrow.down",
+            withConfiguration: UIImage.SymbolConfiguration(pointSize: 32)
+        ), for: .normal)
+        button.isUserInteractionEnabled = false
+        button.tintColor = .white
+        button.backgroundColor = Colors.purpleColor
+        return button
     }()
     
     
@@ -48,16 +52,16 @@ class SortingCollectionViewCell: UICollectionViewCell {
         contentView.backgroundColor = .white
         contentView.layer.cornerRadius = 8
         contentView.clipsToBounds = true
-        contentView.addSubviews(sortingTypeLabel, sortImage)
+        contentView.addSubviews(sortingTypeLabel, sortButton)
         
         sortingTypeLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(12)
             make.centerY.equalToSuperview()
-            make.trailing.equalTo(sortImage.snp.leading).offset(12)
+            make.trailing.equalTo(sortButton.snp.leading).offset(12)
         }
         
-        sortImage.snp.makeConstraints { make in
-            make.top.trailing.bottom.equalToSuperview()
+        sortButton.snp.makeConstraints { make in
+            make.centerY.trailing.equalToSuperview()
             make.width.height.equalTo(80)
         }
     }

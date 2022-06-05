@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+//MARK: FONTS ======================================================================================
 
 public struct Fonts {
     
@@ -29,6 +30,8 @@ public struct Fonts {
 
 }
 
+//MARK: COLORS ======================================================================================
+
 public struct Colors {
     static let orangeColor = UIColor(red: 252/255, green: 154/255, blue: 125/255, alpha: 1)
     static var backGrayColor = UIColor(red: 218/255, green: 218/255, blue: 218/255, alpha: 1)
@@ -43,8 +46,6 @@ public struct Colors {
     
     static let likeRedColor = UIColor(red: 215/255, green: 85/255, blue: 85/255, alpha: 1)
     
-
-    
 }
 
 public struct GradientColors {
@@ -57,66 +58,42 @@ public struct GradientColors {
     static let buttonSecondColor = UIColor(red: 164/255, green: 53/255, blue: 252/255, alpha: 1)
 }
 
+//MARK: GRADIENTS ======================================================================================
+
 public struct Gradients {
     
-    static var flightsListGradient: CAGradientLayer = {
-        let gradient = CAGradientLayer()
-        gradient.type = .axial
-        gradient.colors = [
-            GradientColors.foneFirstColor.cgColor,
-            GradientColors.foneSecondColor.cgColor,
-            GradientColors.foneThirdColor.cgColor
-        ]
-        gradient.startPoint = CGPoint(x: 1, y: 0)
-        gradient.endPoint = CGPoint(x: 0, y: 1)
-        gradient.locations = [0, 0.55, 1]
-        return gradient
-    }()
     
-    static var flightDetailsGradient: CAGradientLayer = {
-        let gradient = CAGradientLayer()
-        gradient.type = .axial
-        gradient.colors = [
-            GradientColors.foneFirstColor.cgColor,
-            GradientColors.foneSecondColor.cgColor,
-            GradientColors.foneThirdColor.cgColor
-        ]
-        gradient.startPoint = CGPoint(x: 0, y: 0)
-        gradient.endPoint = CGPoint(x: 1, y: 1)
-        gradient.locations = [0, 0.55, 1]
-        return gradient
-    }()
-    
+//    static func getGradient(start: CGPoint, end: CGPoint) -> CAGradientLayer {
+//        let gradient = CAGradientLayer()
+//        gradient.type = .axial
+//        gradient.colors = [
+//            GradientColors.foneFirstColor.cgColor,
+//            GradientColors.foneSecondColor.cgColor,
+//            GradientColors.foneThirdColor.cgColor
+//        ]
+//        gradient.startPoint = start
+//        gradient.endPoint = end
+//
+//        gradient.locations = [0, 0.55, 1]
+//        return gradient
+//    }
 }
-public struct Labels {
-    
-    static let chooseFlight = "Выберите авиаперелет"
-    static let search = "Поиск"
-    static let favorits = "Избранные"
 
-    static let departure = "Вылет"
-    static let arrive = "Прибытие"
-    static let flightDate = "Дата отправления"
-    static let pass = "Пассажиры"
-    static let eldern = "Взрослый"
-    static let child = "Детский"
-    static let flightClass = "Класс перелёта"
-    static let econom = "Эконом"
-    static let business = "Бизнес"
-    static let first = "Первый"
-    static let purchase = "Перейти к покупке"
-    
-    static let infoDescription = "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+
+public struct Labels {
+        
+    static let infoDescription = "fffffff fffffffffffffffffffffff ffffffffff fffffffffff fffffffffff fffffffffff fffffffffff ffffffffff ffffffffff fffffffffffff fffffffffff ffffffffffffffffff fffffffff ffffffffffffffff ffffffffff ffffffffffffff fffffffff fffffff ffffffffffff ffffff fffffffff fffffff fffff ffffffffffffff ffffffff ffffff fffffffffff fffffff ffffffffff ffffff ffffffffffff ffffff fffffff fffffffffff ffffffff ffffff fffff fffffffffffffff fffffffffffffffffffffff ffffff fffffff ffffffffffffffff fffffffff fffffffffffff ffffffff ffffffffff ffffffffffff ffffffff f ffffffffff ffffff fffff"
 }
 
 
 public struct Constants {
+    
     static let leadingMargin: CGFloat = 16
     static let trailingMargin: CGFloat = -16
     static let indent: CGFloat = 12
     static let inset: CGFloat = 8
     
-    static let topSectionInset: CGFloat = 22
+    static let topSectionInset: CGFloat = 12
     static let bottomSectionInset: CGFloat = 12
     static let heightOfInformationTitle: CGFloat = 40
     static let heightOfTimePicker: CGFloat = 200
@@ -208,6 +185,24 @@ public extension UIView {
         return button
     }
     
+}
+
+public extension UIViewController {
+    
+    func getGradient(start: CGPoint, end: CGPoint) -> CAGradientLayer {
+        let gradient = CAGradientLayer()
+        gradient.type = .axial
+        gradient.colors = [
+            GradientColors.foneFirstColor.cgColor,
+            GradientColors.foneSecondColor.cgColor,
+            GradientColors.foneThirdColor.cgColor
+        ]
+        gradient.startPoint = start
+        gradient.endPoint = end
+
+        gradient.locations = [0, 0.55, 1]
+        return gradient
+    }
 }
 
 public extension Date {

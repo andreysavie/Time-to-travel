@@ -10,10 +10,9 @@ import SnapKit
 
 class FlightsListViewController: UIViewController {
     
+    var isFetched = false
     
     // MARK: PROPERTIES ============================================================================
-
-    let activityIndicator = UIActivityIndicatorView(style: .large)
         
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -25,29 +24,35 @@ class FlightsListViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = Constants.indent
         layout.scrollDirection = .vertical
-        layout.sectionInset = UIEdgeInsets(top: Constants.topSectionInset, left: 0, bottom: Constants.bottomSectionInset, right: 0)
+        layout.sectionInset = UIEdgeInsets(
+            top: Constants.topSectionInset,
+            left: 0,
+            bottom: Constants.bottomSectionInset,
+            right: 0)
         return layout
+    }()
+    
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .large)
+        indicator.center = self.view.center
+        return indicator
     }()
     
     private lazy var sortingTypeAlertController: UIAlertController = {
         
-        let alertController = UIAlertController(
-            title: "Сортировать по ...",
-            message: "",
-            preferredStyle: .actionSheet )
+        let alertController = UIAlertController(title: "Сортировать по ...", message: "", preferredStyle: .actionSheet)
         
         let price = UIAlertAction(title: "Стоимости", style: .default) { (_) -> Void in
-            NetworkManager.shared.flightsArray.sort(by: { $0.price < $1.price} )
+            NetworkManager.shared.sortFlightsArrayByPrice()
             self.collectionView.reloadData()
-            
         }
         
         let date = UIAlertAction(title: "Дате отправления", style: .default) { (_) -> Void in
-            NetworkManager.shared.flightsArray.sort(by: { $0.startDate < $1.startDate} )
+            NetworkManager.shared.sortFlightsArrayByData()
             self.collectionView.reloadData()
         }
 
-        let declineAction = UIAlertAction(title: "Отмена", style: .destructive) { (_) -> Void in }
+        let declineAction = UIAlertAction(title: "Отмена", style: .destructive)
     
         alertController.addAction(price)
         alertController.addAction(date)
@@ -55,8 +60,7 @@ class FlightsListViewController: UIViewController {
         return alertController
     }()
     
-    private lazy var gradient = Gradients.flightsListGradient
-
+    private lazy var gradient = getGradient(start: CGPoint(x: 1, y: 0), end: CGPoint(x: 0, y: 1))
     
     // MARK: INITS ============================================================================
 
@@ -80,7 +84,22 @@ class FlightsListViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         collectionView.reloadData()
+
+        if isFetched == false {
+            activityIndicator.startAnimating()
+            
+            DispatchQueue.global().async {
+                NetworkManager.shared.fetchData()
+                DispatchQueue.main.sync {
+                    self.collectionView.reloadData()
+                    self.activityIndicator.stopAnimating()
+                }
+            }
+            
+            isFetched = true
+        }
     }
     
     
@@ -90,7 +109,7 @@ class FlightsListViewController: UIViewController {
     private func setupLayout() {
         gradient.frame = view.bounds
         view.layer.addSublayer(gradient)
-        view.addSubview(collectionView)
+        view.addSubviews(collectionView, activityIndicator)
         
         collectionView.snp.makeConstraints { make in
             make.leading.top.trailing.bottom.equalTo(view.safeAreaLayoutGuide)

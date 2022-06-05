@@ -35,7 +35,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         appearanceTabBar.stackedLayoutAppearance.selected.iconColor = Colors.purpleColor
         tabBarController.tabBar.standardAppearance = appearanceTabBar
 
-
         flightsListNavigationController.tabBarItem = UITabBarItem(title: "Поиск", image: UIImage(systemName: "airplane"), selectedImage: UIImage(systemName: "airplane"))
         flightsListNavigationController.tabBarItem.setTitleTextAttributes(Attributes.nabBarItemAttributes, for: .normal)
         
