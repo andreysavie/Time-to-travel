@@ -133,6 +133,7 @@
 				D57BA7F428469BFA00DA8F4D /* Products */,
 				B882A648EB93AB4BDD13050E /* Pods */,
 				37115CDFD1E04A232CB51F4B /* Frameworks */,
+				D551CA0C284937870019A464 /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -152,7 +153,6 @@
 				D54F9D12284BF74100B3C0EA /* Model */,
 				D54F9D11284BF73100B3C0EA /* Controller */,
 				D568C45E284A151C00418D97 /* View */,
-				D551CA0C284937870019A464 /* README.md */,
 				D57BA7FC28469BFB00DA8F4D /* Main.storyboard */,
 				D57BA7FF28469BFD00DA8F4D /* Assets.xcassets */,
 				D57BA80128469BFD00DA8F4D /* LaunchScreen.storyboard */,
